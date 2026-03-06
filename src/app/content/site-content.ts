@@ -29,15 +29,6 @@ export type BenefitItem = {
   icon: LucideIcon;
 };
 
-export type BannerItem = {
-  title: string;
-  description: string;
-  cta: string;
-  href: string;
-  image: string;
-  alt: string;
-};
-
 export type OfficeItem = {
   city: string;
   zone: string;
@@ -75,36 +66,6 @@ export const heroHighlights = [
   {
     title: "Educacion cooperativa",
     description: "Programas formativos para tomar mejores decisiones con tu dinero.",
-  },
-];
-
-export const bannerItems: BannerItem[] = [
-  {
-    title: "Soluciones pensadas para familias y asociados",
-    description:
-      "Banners visuales con personajes ficticios para comunicar cercania, confianza y progreso financiero.",
-    cta: "Quiero asesoria",
-    href: "#contacto",
-    image: "/banners/banner-familia.svg",
-    alt: "Ilustracion de una familia ficticia revisando opciones financieras.",
-  },
-  {
-    title: "Acompana tu negocio con respaldo cooperativo",
-    description:
-      "Escena ilustrada de una empresaria ficticia recibiendo asesoria para impulsar su crecimiento.",
-    cta: "Ver productos",
-    href: "#productos",
-    image: "/banners/banner-empresaria.svg",
-    alt: "Ilustracion de una empresaria ficticia con asesor financiero.",
-  },
-  {
-    title: "Atencion humana para decisiones importantes",
-    description:
-      "Imagen promocional con asociado ficticio y asesora en una conversacion clara y cercana.",
-    cta: "Contactar ahora",
-    href: "#contacto",
-    image: "/banners/banner-asesoria.svg",
-    alt: "Ilustracion de una asesora ficticia atendiendo a un asociado.",
   },
 ];
 

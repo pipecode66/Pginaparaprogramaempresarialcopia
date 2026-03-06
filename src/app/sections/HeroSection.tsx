@@ -54,26 +54,16 @@ export function HeroSection() {
               </p>
             </div>
 
-            <div className="space-y-4">
-              <article className="overflow-hidden rounded-[30px] border border-white/20 bg-white/10 shadow-2xl backdrop-blur-sm">
-                <img
-                  src="/banners/banner-asesoria.svg"
-                  alt="Ilustracion de personas ficticias en asesoria financiera"
-                  className="h-[320px] w-full object-cover"
-                />
-              </article>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                {heroHighlights.map((highlight) => (
-                  <article
-                    key={highlight.title}
-                    className="rounded-2xl border border-white/20 bg-white/12 p-5 shadow-lg backdrop-blur-sm"
-                  >
-                    <h2 className="text-lg font-bold">{highlight.title}</h2>
-                    <p className="mt-2 text-sm text-white/88">{highlight.description}</p>
-                  </article>
-                ))}
-              </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {heroHighlights.map((highlight) => (
+                <article
+                  key={highlight.title}
+                  className="rounded-2xl border border-white/20 bg-white/12 p-5 shadow-lg backdrop-blur-sm"
+                >
+                  <h2 className="text-lg font-bold">{highlight.title}</h2>
+                  <p className="mt-2 text-sm text-white/88">{highlight.description}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
