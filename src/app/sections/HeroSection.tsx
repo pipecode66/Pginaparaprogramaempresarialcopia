@@ -1,5 +1,4 @@
 import { ArrowRight, Handshake } from "lucide-react";
-import { heroHighlights } from "../content/site-content";
 import { Button } from "../components/ui/button";
 
 export function HeroSection() {
@@ -9,7 +8,7 @@ export function HeroSection() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,255,255,.18),transparent_38%),radial-gradient(circle_at_80%_85%,rgba(89,193,60,.28),transparent_44%)]" />
 
         <div className="container relative mx-auto px-4 py-18 md:py-24">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1 text-sm font-semibold">
                 <Handshake className="size-4" />
@@ -47,18 +46,24 @@ export function HeroSection() {
                   <a href="#productos">Ver productos</a>
                 </Button>
               </div>
+
+              <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/85">
+                <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">
+                  Ahorro y credito con acompanamiento cercano
+                </span>
+                <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2">
+                  Atencion presencial en Cucuta
+                </span>
+              </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {heroHighlights.map((highlight) => (
-                <article
-                  key={highlight.title}
-                  className="rounded-2xl border border-white/20 bg-white/12 p-5 shadow-lg backdrop-blur-sm"
-                >
-                  <h2 className="text-lg font-bold">{highlight.title}</h2>
-                  <p className="mt-2 text-sm text-white/88">{highlight.description}</p>
-                </article>
-              ))}
+            <div className="relative overflow-hidden rounded-[32px] border border-white/15 bg-white/8 shadow-2xl backdrop-blur-sm">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-black/8" />
+              <img
+                src="/bannercajaunion.png"
+                alt="Grupo de personas representando cercania y confianza en Caja Union"
+                className="h-[420px] w-full object-cover object-[66%_center] md:h-[500px] lg:h-[560px]"
+              />
             </div>
           </div>
         </div>

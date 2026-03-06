@@ -50,25 +50,6 @@ export const navItems: NavItem[] = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-export const heroHighlights = [
-  {
-    title: "Ahorro con proposito",
-    description: "Opciones disenadas para metas personales, familiares y empresariales.",
-  },
-  {
-    title: "Credito responsable",
-    description: "Acompanamiento para cada solicitud con enfoque humano y sostenible.",
-  },
-  {
-    title: "Atencion cercana",
-    description: "Equipo experto para resolver dudas y orientar tu siguiente paso financiero.",
-  },
-  {
-    title: "Educacion cooperativa",
-    description: "Programas formativos para tomar mejores decisiones con tu dinero.",
-  },
-];
-
 export const productItems: ProductItem[] = [
   {
     title: "Linea de Ahorro Union",
@@ -163,8 +144,23 @@ export const faqItems = [
       "Depende del tipo de producto. El equipo comercial te enviara requisitos actualizados y lista de documentos segun tu perfil.",
   },
   {
-    question: "El formulario ya esta conectado a backend?",
+    question: "Donde esta ubicada la sede principal?",
     answer:
-      "En este MVP se guarda en localStorage y confirma recepcion. El codigo esta preparado para reemplazar ese paso por un endpoint de API.",
+      "La sede principal esta ubicada en la Av. 1 #11-66, Cucuta, Norte de Santander. En la seccion de oficinas puedes abrir la ubicacion directamente en Google Maps.",
+  },
+  {
+    question: "Cual es el horario de atencion?",
+    answer:
+      "La atencion presencial en la sede principal funciona de lunes a viernes, de 8:00 a.m. a 5:00 p.m.",
+  },
+  {
+    question: "Puedo recibir asesoria antes de elegir un producto?",
+    answer:
+      "Si. Puedes escribir por el formulario de contacto o usar el boton de WhatsApp para recibir orientacion inicial segun tu necesidad.",
+  },
+  {
+    question: "Que canales tengo para comunicarme con Caja Union?",
+    answer:
+      "Puedes contactarte desde esta pagina por el formulario, el acceso directo a WhatsApp y la atencion presencial en la sede principal.",
   },
 ];
