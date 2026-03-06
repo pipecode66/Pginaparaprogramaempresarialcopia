@@ -62,7 +62,7 @@ export function HeroSection() {
               <img
                 src="/bannercajaunion.png"
                 alt="Grupo de personas representando cercania y confianza en Caja Union"
-                className="h-[420px] w-full object-cover object-[66%_center] md:h-[500px] lg:h-[560px]"
+                className="h-[360px] w-full object-cover object-[72%_18%] sm:h-[420px] sm:object-[69%_18%] md:h-[500px] md:object-[67%_20%] lg:h-[560px] lg:object-[64%_20%]"
               />
             </div>
           </div>
