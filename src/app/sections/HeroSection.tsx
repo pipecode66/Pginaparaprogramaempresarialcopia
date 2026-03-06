@@ -47,11 +47,6 @@ export function HeroSection() {
                   <a href="#productos">Ver productos</a>
                 </Button>
               </div>
-
-              <p className="mt-5 text-sm text-white/80">
-                Nota: cifras, tasas y cobertura final deben cargarse desde
-                contenidos oficiales antes de produccion.
-              </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">

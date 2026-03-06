@@ -43,8 +43,8 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
           <div>
             <h3 className="mb-4 text-base font-bold text-foreground">Contacto</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>Correo: contacto@cajaunion.coop (placeholder)</li>
-              <li>Telefono: +57 300 000 0000 (placeholder)</li>
+              <li>Correo: contacto@cajaunion.coop</li>
+              <li>Telefono: +57 3125038082</li>
               <li>Sede principal: Av. 1 #11-66, Cucuta, Norte de Santander</li>
             </ul>
           </div>
@@ -52,8 +52,7 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
 
         <div className="mt-10 border-t border-border pt-6 text-sm text-muted-foreground">
           <p>
-            {currentYear} Caja Union. Este sitio MVP usa datos referenciales para
-            maquetacion.
+            {currentYear} Caja Union. Zivra Studio - Todos los derechos reservados.
           </p>
         </div>
       </div>

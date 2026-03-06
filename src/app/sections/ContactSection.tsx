@@ -51,7 +51,7 @@ export function ContactSection() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(nextData));
 
       setStatusMessage(
-        "Recibido. Tu solicitud fue guardada localmente y esta lista para enviarse a una API."
+        "Recibido. Tu solicitud fue enviada correctamente y estaremos proximos a ponernos en contacto contigo!"
       );
 
       reset({
@@ -64,7 +64,7 @@ export function ContactSection() {
       });
     } catch {
       setStatusMessage(
-        "No se pudo guardar la solicitud localmente. Revisa permisos del navegador."
+        "No se pudo guardar la solicitud. Revisa permisos del navegador."
       );
     }
   };
@@ -81,9 +81,9 @@ export function ContactSection() {
               Cuentanos que necesitas y te contactamos
             </h2>
             <p className="text-muted-foreground">
-              El formulario usa validacion con <code>react-hook-form</code>. En
-              este MVP se almacena en <code>localStorage</code> para pruebas y
-              queda listo para integrar backend.
+              Envianos un <code>mensaje</code> nosotros
+              nos encargaremos de <code>contactarte</code> y ofrecerte
+              la mejor asesoría para tus finanzas.
             </p>
 
             <Card className="border-primary/20 bg-primary/6">
@@ -93,8 +93,9 @@ export function ContactSection() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">
-                <p>WhatsApp: +57 300 000 0000 (placeholder)</p>
-                <p>Correo: contacto@cajaunion.coop (placeholder)</p>
+                <p>WhatsApp: +57 3125038082</p>
+                <p>Telefono: 5720155 - 5838374</p>
+                <p>Correo: contacto@cajaunion.coop</p>
                 <p>Sede principal: Av. 1 #11-66, Cucuta, Norte de Santander</p>
                 <p>Horario de atencion: lunes a viernes, 8:00 a.m. - 5:00 p.m.</p>
               </CardContent>

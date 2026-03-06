@@ -44,7 +44,7 @@ export function BenefitsSection() {
           <Card className="border-border/80 bg-background">
             <CardHeader className="pb-2">
               <CardTitle className="text-xl font-bold">
-                Preguntas frecuentes del MVP
+                Preguntas frecuentes
               </CardTitle>
             </CardHeader>
             <CardContent>
