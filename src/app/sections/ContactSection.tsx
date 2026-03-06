@@ -95,6 +95,7 @@ export function ContactSection() {
               <CardContent className="space-y-2 text-sm">
                 <p>WhatsApp: +57 300 000 0000 (placeholder)</p>
                 <p>Correo: contacto@cajaunion.coop (placeholder)</p>
+                <p>Sede principal: Av. 1 #11-66, Cucuta, Norte de Santander</p>
                 <p>Horario de atencion: lunes a viernes, 8:00 a.m. - 5:00 p.m.</p>
               </CardContent>
             </Card>

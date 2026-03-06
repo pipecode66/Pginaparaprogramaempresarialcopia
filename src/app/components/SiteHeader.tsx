@@ -21,7 +21,7 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <a href="#inicio" aria-label="Ir al inicio de Caja Unión">
+        <a href="#inicio" aria-label="Ir al inicio de Caja Union">
           <BrandLogo />
         </a>
 
@@ -30,6 +30,8 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
             <a
               key={item.href}
               href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noreferrer" : undefined}
               className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {item.label}
@@ -60,11 +62,14 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                 <BrandLogo compact />
               </SheetTitle>
             </SheetHeader>
+
             <nav className="flex flex-col gap-2 px-4" aria-label="Menu movil">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noreferrer" : undefined}
                   onClick={() => setOpen(false)}
                   className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
@@ -72,6 +77,7 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                 </a>
               ))}
             </nav>
+
             <div className="px-4 pb-6">
               <Button
                 asChild

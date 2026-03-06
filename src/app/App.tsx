@@ -2,6 +2,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { navItems } from "./content/site-content";
+import { BannerShowcaseSection } from "./sections/BannerShowcaseSection";
 import { BenefitsSection } from "./sections/BenefitsSection";
 import { ContactSection } from "./sections/ContactSection";
 import { HeroSection } from "./sections/HeroSection";
@@ -15,6 +16,7 @@ export default function App() {
 
       <main>
         <HeroSection />
+        <BannerShowcaseSection />
         <ProductsSection />
         <BenefitsSection />
         <OfficesSection />

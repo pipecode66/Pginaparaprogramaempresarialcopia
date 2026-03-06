@@ -29,6 +29,8 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
                 <li key={item.href}>
                   <a
                     href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
                     className="text-muted-foreground transition-colors hover:text-primary"
                   >
                     {item.label}
@@ -43,7 +45,7 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>Correo: contacto@cajaunion.coop (placeholder)</li>
               <li>Telefono: +57 300 000 0000 (placeholder)</li>
-              <li>Cobertura: nacional y canal digital</li>
+              <li>Sede principal: Av. 1 #11-66, Cucuta, Norte de Santander</li>
             </ul>
           </div>
         </div>
