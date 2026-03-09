@@ -13,6 +13,7 @@ import {
 export type NavItem = {
   label: string;
   href: string;
+  external?: boolean;
 };
 
 export type ProductItem = {
@@ -31,6 +32,7 @@ export type BenefitItem = {
 export type OfficeItem = {
   city: string;
   zone: string;
+  address: string;
   schedule: string;
   note: string;
 };
@@ -38,70 +40,56 @@ export type OfficeItem = {
 export const navItems: NavItem[] = [
   { label: "Inicio", href: "#inicio" },
   { label: "Productos", href: "#productos" },
+  {
+    label: "Union Empresarial",
+    href: "https://v0-caja-union-pie.vercel.app/",
+    external: true,
+  },
   { label: "Beneficios", href: "#beneficios" },
   { label: "Oficinas", href: "#oficinas" },
   { label: "Contacto", href: "#contacto" },
 ];
 
-export const heroHighlights = [
-  {
-    title: "Ahorro con propósito",
-    description: "Opciones diseñadas para metas personales, familiares y empresariales.",
-  },
-  {
-    title: "Crédito responsable",
-    description: "Acompañamiento para cada solicitud con enfoque humano y sostenible.",
-  },
-  {
-    title: "Atención cercana",
-    description: "Equipo experto para resolver dudas y orientar tu siguiente paso financiero.",
-  },
-  {
-    title: "Educación cooperativa",
-    description: "Programas formativos para tomar mejores decisiones con tu dinero.",
-  },
-];
-
 export const productItems: ProductItem[] = [
   {
-    title: "Línea de Ahorro Unión",
+    title: "Linea de Ahorro Union",
     description:
       "Producto de ahorro flexible para construir historial y consolidar metas de mediano plazo.",
-    cta: "Solicitar asesoría",
+    cta: "Solicitar asesoria",
     icon: PiggyBank,
   },
   {
     title: "Ahorro Programado",
     description:
-      "Aportes periódicos para objetivos específicos con seguimiento mensual personalizado.",
+      "Aportes periodicos para objetivos especificos con seguimiento mensual personalizado.",
     cta: "Programar ahorro",
     icon: Landmark,
   },
   {
-    title: "Crédito Cooperativo",
+    title: "Credito Cooperativo",
     description:
-      "Alternativas de financiamiento para educación, proyectos productivos o necesidades personales.",
+      "Alternativas de financiamiento para educacion, proyectos productivos o necesidades personales.",
     cta: "Conocer requisitos",
     icon: HandCoins,
   },
   {
-    title: "Vinculación de Asociados",
+    title: "Vinculacion de Asociados",
     description:
-      "Proceso guiado para asociarte y acceder a servicios, convenios y acompañamiento permanente.",
-    cta: "Iniciar vinculación",
+      "Proceso guiado para asociarte y acceder a servicios, convenios y acompanamiento permanente.",
+    cta: "Iniciar vinculacion",
     icon: HeartHandshake,
   },
   {
     title: "Seguridad y Respaldo",
     description:
-      "Protocolos operativos y de atención orientados al cuidado de la información del asociado.",
+      "Protocolos operativos y de atencion orientados al cuidado de la informacion del asociado.",
     cta: "Revisar cobertura",
     icon: ShieldCheck,
   },
   {
     title: "Pagos y Recaudos",
     description:
-      "Canales habilitados para gestionar aportes y obligaciones de manera práctica y oportuna.",
+      "Canales habilitados para gestionar aportes y obligaciones de manera practica y oportuna.",
     cta: "Ver canales",
     icon: BadgeDollarSign,
   },
@@ -115,66 +103,64 @@ export const benefitItems: BenefitItem[] = [
     icon: HeartHandshake,
   },
   {
-    title: "Asesoría personalizada",
+    title: "Asesoria personalizada",
     description:
-      "Atención individual para revisar perfil financiero y recomendar la mejor ruta.",
+      "Atencion individual para revisar perfil financiero y recomendar la mejor ruta.",
     icon: Building2,
   },
   {
     title: "Procesos claros",
     description:
-      "Información simple, tiempos definidos y seguimiento visible en cada solicitud.",
+      "Informacion simple, tiempos definidos y seguimiento visible en cada solicitud.",
     icon: MapPinned,
   },
   {
     title: "Cultura de ahorro",
     description:
-      "Acciones formativas para fortalecer hábitos financieros responsables en el largo plazo.",
+      "Acciones formativas para fortalecer habitos financieros responsables en el largo plazo.",
     icon: PiggyBank,
   },
 ];
 
 export const officeItems: OfficeItem[] = [
   {
-    city: "Bogotá D.C.",
-    zone: "Sede principal (placeholder)",
+    city: "Cucuta",
+    zone: "Sede principal",
+    address: "Av. 1 #11-66, Cucuta, Norte de Santander",
     schedule: "Lunes a viernes, 8:00 a.m. a 5:00 p.m.",
-    note: "Dirección referencial. Confirmar ubicación final antes de producción.",
-  },
-  {
-    city: "Medellín",
-    zone: "Punto de atención (placeholder)",
-    schedule: "Lunes a viernes, 8:00 a.m. a 5:00 p.m.",
-    note: "Dirección referencial. Confirmar ubicación final antes de producción.",
-  },
-  {
-    city: "Cali",
-    zone: "Punto de atención (placeholder)",
-    schedule: "Lunes a viernes, 8:00 a.m. a 5:00 p.m.",
-    note: "Dirección referencial. Confirmar ubicación final antes de producción.",
-  },
-  {
-    city: "Canal digital",
-    zone: "Atención virtual",
-    schedule: "Respuesta en horario hábil",
-    note: "Formulario y WhatsApp habilitados para radicar solicitudes.",
+    note: "Atencion presencial y acompanamiento comercial desde la sede principal.",
   },
 ];
 
 export const faqItems = [
   {
-    question: "¿Cómo me asocio a Caja Unión?",
+    question: "Como me asocio a Caja Union?",
     answer:
-      "Desde esta landing puedes iniciar la solicitud en el formulario de contacto. Un asesor valida datos y te comparte los pasos de vinculación.",
+      "Desde esta landing puedes iniciar la solicitud en el formulario de contacto. Un asesor valida datos y te comparte los pasos de vinculacion.",
   },
   {
-    question: "¿Qué necesito para solicitar un producto?",
+    question: "Que necesito para solicitar un producto?",
     answer:
-      "Depende del tipo de producto. El equipo comercial te enviará requisitos actualizados y lista de documentos según tu perfil.",
+      "Depende del tipo de producto. El equipo comercial te enviara requisitos actualizados y lista de documentos segun tu perfil.",
   },
   {
-    question: "¿El formulario ya está conectado a backend?",
+    question: "Donde esta ubicada la sede principal?",
     answer:
-      "En este MVP se guarda en localStorage y confirma recepción. El código está preparado para reemplazar ese paso por un endpoint de API.",
+      "La sede principal esta ubicada en la Av. 1 #11-66, Cucuta, Norte de Santander. En la seccion de oficinas puedes abrir la ubicacion directamente en Google Maps.",
+  },
+  {
+    question: "Cual es el horario de atencion?",
+    answer:
+      "La atencion presencial en la sede principal funciona de lunes a viernes, de 8:00 a.m. a 5:00 p.m.",
+  },
+  {
+    question: "Puedo recibir asesoria antes de elegir un producto?",
+    answer:
+      "Si. Puedes escribir por el formulario de contacto o usar el boton de WhatsApp para recibir orientacion inicial segun tu necesidad.",
+  },
+  {
+    question: "Que canales tengo para comunicarme con Caja Union?",
+    answer:
+      "Puedes contactarte desde esta pagina por el formulario, el acceso directo a WhatsApp y la atencion presencial en la sede principal.",
   },
 ];
