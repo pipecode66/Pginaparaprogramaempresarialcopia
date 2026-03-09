@@ -41,7 +41,7 @@ export const navItems: NavItem[] = [
   { label: "Inicio", href: "#inicio" },
   { label: "Productos", href: "#productos" },
   {
-    label: "Directorio",
+    label: "Union Empresarial",
     href: "https://v0-caja-union-pie.vercel.app/",
     external: true,
   },
