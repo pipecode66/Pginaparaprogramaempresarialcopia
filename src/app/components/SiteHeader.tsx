@@ -1,8 +1,21 @@
-import { Menu } from "lucide-react";
+﻿import { ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
 import type { NavItem } from "../content/site-content";
 import { BrandLogo } from "./BrandLogo";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
 import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 import {
   Sheet,
   SheetContent,
@@ -26,17 +39,71 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Principal">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noreferrer" : undefined}
-              className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            if (!item.children?.length) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noreferrer" : undefined}
+                  className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {item.label}
+                </a>
+              );
+            }
+
+            return (
+              <DropdownMenu key={item.label}>
+                <DropdownMenuTrigger asChild>
+                  <button className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                    {item.label}
+                    <ChevronDown className="size-4" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  className="w-[320px] rounded-2xl border-border/80 p-2"
+                >
+                  <DropdownMenuItem asChild className="rounded-xl px-3 py-3">
+                    <a href={item.href} className="block">
+                      <span className="block font-semibold text-foreground">
+                        Ver {item.label}
+                      </span>
+                      <span className="mt-1 block text-xs text-muted-foreground">
+                        Ir a la seccion principal del sitio.
+                      </span>
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  {item.children.map((child) => (
+                    <DropdownMenuItem
+                      key={child.href}
+                      asChild
+                      className="rounded-xl px-3 py-3"
+                    >
+                      <a
+                        href={child.href}
+                        target={child.external ? "_blank" : undefined}
+                        rel={child.external ? "noreferrer" : undefined}
+                        className="block"
+                      >
+                        <span className="block font-semibold text-foreground">
+                          {child.label}
+                        </span>
+                        {child.description ? (
+                          <span className="mt-1 block text-xs leading-5 text-muted-foreground">
+                            {child.description}
+                          </span>
+                        ) : null}
+                      </a>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            );
+          })}
         </nav>
 
         <div className="hidden md:block">
@@ -56,27 +123,62 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
               <Menu className="size-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[82%] sm:max-w-xs">
+          <SheetContent side="right" className="w-[86%] sm:max-w-sm">
             <SheetHeader className="border-b border-border pb-5">
               <SheetTitle>
                 <BrandLogo compact />
               </SheetTitle>
             </SheetHeader>
 
-            <nav className="flex flex-col gap-2 px-4" aria-label="Menu movil">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noreferrer" : undefined}
-                  onClick={() => setOpen(false)}
-                  className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
+            <Accordion type="multiple" className="px-4" aria-label="Menu movil">
+              {navItems.map((item) => {
+                if (!item.children?.length) {
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noreferrer" : undefined}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-md px-3 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      {item.label}
+                    </a>
+                  );
+                }
+
+                return (
+                  <AccordionItem key={item.label} value={item.label}>
+                    <AccordionTrigger className="px-3 text-sm font-semibold text-foreground hover:no-underline">
+                      {item.label}
+                    </AccordionTrigger>
+                    <AccordionContent className="px-3 pb-3">
+                      <div className="flex flex-col gap-2">
+                        <a
+                          href={item.href}
+                          onClick={() => setOpen(false)}
+                          className="rounded-md border border-border/80 bg-muted/50 px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                        >
+                          Ver {item.label}
+                        </a>
+                        {item.children.map((child) => (
+                          <a
+                            key={child.href}
+                            href={child.href}
+                            target={child.external ? "_blank" : undefined}
+                            rel={child.external ? "noreferrer" : undefined}
+                            onClick={() => setOpen(false)}
+                            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                          >
+                            {child.label}
+                          </a>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
 
             <div className="px-4 pb-6">
               <Button

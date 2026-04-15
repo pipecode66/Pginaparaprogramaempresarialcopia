@@ -1,4 +1,5 @@
-import type { NavItem } from "../content/site-content";
+﻿import type { NavItem } from "../content/site-content";
+import { serviceAccessCards } from "../content/site-content";
 import { BrandLogo } from "./BrandLogo";
 
 type SiteFooterProps = {
@@ -11,7 +12,7 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
   return (
     <footer className="border-t border-border bg-muted/60">
       <div className="container mx-auto px-4 py-14">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           <div className="space-y-4">
             <a href="#inicio" aria-label="Caja Union inicio">
               <BrandLogo />
@@ -26,7 +27,7 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
             <h3 className="mb-4 text-base font-bold text-foreground">Navegacion</h3>
             <ul className="space-y-3 text-sm">
               {navItems.map((item) => (
-                <li key={item.href}>
+                <li key={item.label}>
                   <a
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
@@ -37,6 +38,34 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
                   </a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-base font-bold text-foreground">Accesos utiles</h3>
+            <ul className="space-y-3 text-sm">
+              {serviceAccessCards.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={item.primaryCta.href}
+                    target={item.primaryCta.external ? "_blank" : undefined}
+                    rel={item.primaryCta.external ? "noreferrer" : undefined}
+                    className="text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="https://v0-caja-union-pie.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Union Empresarial
+                </a>
+              </li>
             </ul>
           </div>
 

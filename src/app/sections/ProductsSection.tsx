@@ -1,15 +1,38 @@
-import { ArrowUpRight } from "lucide-react";
-import { productItems } from "../content/site-content";
+﻿import { ArrowUpRight, Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  productCategories,
+  serviceAccessCards,
+} from "../content/site-content";
 import { Button } from "../components/ui/button";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
+
+const categoryIds = new Set(productCategories.map((category) => category.id));
 
 export function ProductsSection() {
+  const [activeTab, setActiveTab] = useState(productCategories[0]?.id ?? "");
+
+  useEffect(() => {
+    const syncTabFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+
+      if (categoryIds.has(hash)) {
+        setActiveTab(hash);
+      }
+    };
+
+    syncTabFromHash();
+    window.addEventListener("hashchange", syncTabFromHash);
+
+    return () => window.removeEventListener("hashchange", syncTabFromHash);
+  }, []);
+
   return (
     <section id="productos" className="scroll-mt-24 bg-background py-20">
       <div className="container mx-auto px-4">
@@ -18,47 +41,172 @@ export function ProductsSection() {
             Portafolio
           </p>
           <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">
-            Productos para cada etapa de tus objetivos
+            Productos, seguros y accesos digitales organizados para que el usuario
+            encuentre rapido lo que necesita
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Base visual inspirada en la referencia, optimizada para una
-            experiencia corporativa de Caja Union con enfoque en conversion.
+            Las tasas, cupos y plazos visibles en esta seccion funcionan como
+            referencia comercial basada en informacion publica de Caja Union. Todas
+            las condiciones deben confirmarse con el tarifario y estudio vigentes.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {productItems.map((product) => {
-            const Icon = product.icon;
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-10 gap-6">
+          <TabsList className="h-auto w-full flex-wrap justify-start gap-2 rounded-2xl bg-muted/70 p-2 md:w-auto">
+            {productCategories.map((category) => (
+              <TabsTrigger
+                key={category.id}
+                value={category.id}
+                className="min-w-[180px] flex-none rounded-xl px-4 py-2 text-sm font-semibold"
+              >
+                {category.title}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {productCategories.map((category) => (
+            <TabsContent key={category.id} value={category.id}>
+              <div
+                id={category.id}
+                className="scroll-mt-28 rounded-[28px] border border-border/70 bg-muted/35 p-6 md:p-8"
+              >
+                <div className="max-w-3xl">
+                  <h3 className="text-2xl font-bold text-foreground md:text-3xl">
+                    {category.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground md:text-base">
+                    {category.description}
+                  </p>
+                </div>
+
+                <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  {category.items.map((product) => {
+                    const Icon = product.icon;
+
+                    return (
+                      <Card
+                        key={product.title}
+                        className="border-border/80 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                      >
+                        <CardHeader className="pb-2">
+                          <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <Icon className="size-5" />
+                          </span>
+                          <CardTitle className="text-xl font-bold">
+                            {product.title}
+                          </CardTitle>
+                        </CardHeader>
+
+                        <CardContent className="space-y-5 text-sm text-muted-foreground">
+                          <p>{product.description}</p>
+
+                          <div className="grid gap-3 rounded-2xl border border-border/70 bg-muted/45 p-4">
+                            <div>
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                Tasa
+                              </p>
+                              <p className="mt-1 text-sm font-medium text-foreground">
+                                {product.rate}
+                              </p>
+                            </div>
+                            <div>
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                Plazo
+                              </p>
+                              <p className="mt-1 text-sm font-medium text-foreground">
+                                {product.term}
+                              </p>
+                            </div>
+                          </div>
+
+                          <ul className="space-y-2">
+                            {product.highlights.map((highlight) => (
+                              <li key={highlight} className="flex items-start gap-2">
+                                <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                                <span>{highlight}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <Button
+                            asChild
+                            variant="ghost"
+                            className="w-full justify-between border border-border/80 bg-muted/50 text-foreground hover:bg-accent hover:text-accent-foreground"
+                          >
+                            <a href="#contacto">
+                              {product.cta}
+                              <ArrowUpRight className="size-4" />
+                            </a>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          {serviceAccessCards.map((card) => {
+            const Icon = card.icon;
 
             return (
-              <Card
-                key={product.title}
-                className="border-border/80 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              <div
+                key={card.id}
+                id={card.id}
+                className="scroll-mt-28 rounded-[28px] border border-primary/15 bg-primary p-8 text-primary-foreground shadow-2xl"
               >
-                <CardHeader className="pb-0">
-                  <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <Icon className="size-5" />
-                  </span>
-                  <CardTitle className="text-xl font-bold">{product.title}</CardTitle>
-                </CardHeader>
+                <span className="inline-flex size-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white">
+                  <Icon className="size-5" />
+                </span>
+                <h3 className="mt-5 text-2xl font-bold md:text-3xl">{card.title}</h3>
+                <p className="mt-3 max-w-xl text-sm leading-6 text-white/85 md:text-base">
+                  {card.description}
+                </p>
 
-                <CardContent className="pt-3">
-                  <p className="text-sm text-muted-foreground">{product.description}</p>
-                </CardContent>
+                <ul className="mt-6 space-y-2 text-sm text-white/85">
+                  {card.details.map((detail) => (
+                    <li key={detail} className="flex items-start gap-2">
+                      <Check className="mt-0.5 size-4 shrink-0 text-accent" />
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <CardFooter>
+                <div className="mt-8 flex flex-wrap gap-3">
                   <Button
                     asChild
-                    variant="ghost"
-                    className="w-full justify-between border border-border/80 bg-muted/40 text-foreground hover:bg-accent hover:text-accent-foreground"
+                    className="bg-accent text-accent-foreground hover:bg-accent/90"
                   >
-                    <a href="#contacto">
-                      {product.cta}
+                    <a
+                      href={card.primaryCta.href}
+                      target={card.primaryCta.external ? "_blank" : undefined}
+                      rel={card.primaryCta.external ? "noreferrer" : undefined}
+                    >
+                      {card.primaryCta.label}
                       <ArrowUpRight className="size-4" />
                     </a>
                   </Button>
-                </CardFooter>
-              </Card>
+
+                  {card.secondaryCta ? (
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                    >
+                      <a
+                        href={card.secondaryCta.href}
+                        target={card.secondaryCta.external ? "_blank" : undefined}
+                        rel={card.secondaryCta.external ? "noreferrer" : undefined}
+                      >
+                        {card.secondaryCta.label}
+                      </a>
+                    </Button>
+                  ) : null}
+                </div>
+              </div>
             );
           })}
         </div>
