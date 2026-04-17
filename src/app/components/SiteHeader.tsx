@@ -13,7 +13,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import {
@@ -64,39 +63,23 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="start"
-                  className="w-[320px] rounded-2xl border-border/80 p-2"
+                  className="w-[280px] rounded-2xl border-border/80 p-2"
                 >
-                  <DropdownMenuItem asChild className="rounded-xl px-3 py-3">
-                    <a href={item.href} className="block">
-                      <span className="block font-semibold text-foreground">
-                        Ver {item.label}
-                      </span>
-                      <span className="mt-1 block text-xs text-muted-foreground">
-                        Ir a la seccion principal del sitio.
-                      </span>
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
                   {item.children.map((child) => (
                     <DropdownMenuItem
                       key={child.href}
                       asChild
-                      className="rounded-xl px-3 py-3"
+                      className="rounded-xl px-3 py-3 text-center"
                     >
                       <a
                         href={child.href}
                         target={child.external ? "_blank" : undefined}
                         rel={child.external ? "noreferrer" : undefined}
-                        className="block"
+                        className="block w-full"
                       >
                         <span className="block font-semibold text-foreground">
                           {child.label}
                         </span>
-                        {child.description ? (
-                          <span className="mt-1 block text-xs leading-5 text-muted-foreground">
-                            {child.description}
-                          </span>
-                        ) : null}
                       </a>
                     </DropdownMenuItem>
                   ))}
@@ -154,13 +137,6 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                     </AccordionTrigger>
                     <AccordionContent className="px-3 pb-3">
                       <div className="flex flex-col gap-2">
-                        <a
-                          href={item.href}
-                          onClick={() => setOpen(false)}
-                          className="rounded-md border border-border/80 bg-muted/50 px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                        >
-                          Ver {item.label}
-                        </a>
                         {item.children.map((child) => (
                           <a
                             key={child.href}
@@ -168,7 +144,7 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                             target={child.external ? "_blank" : undefined}
                             rel={child.external ? "noreferrer" : undefined}
                             onClick={() => setOpen(false)}
-                            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                            className="rounded-md px-3 py-2 text-center text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
                           >
                             {child.label}
                           </a>

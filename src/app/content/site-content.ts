@@ -112,22 +112,12 @@ export const navItems: NavItem[] = [
   { label: "Inicio", href: "#inicio" },
   {
     label: "Acerca de",
-    href: "#acerca-de",
+    href: "#",
     children: [
       {
         label: "Nosotros",
         href: "#nosotros",
         description: "Panorama institucional y enfoque cooperativo.",
-      },
-      {
-        label: "Vision y Mision",
-        href: "#vision-mision",
-        description: "Nuestro horizonte estrategico y compromiso social.",
-      },
-      {
-        label: "Propuesta de Negocio",
-        href: "#propuesta-negocio",
-        description: "Factores diferenciales y promesa de valor.",
       },
       {
         label: "Asambleas",
