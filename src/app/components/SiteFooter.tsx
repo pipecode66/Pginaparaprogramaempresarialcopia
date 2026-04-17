@@ -1,5 +1,5 @@
 ﻿import type { NavItem } from "../content/site-content";
-import { serviceAccessCards } from "../content/site-content";
+import { directoryLink, serviceAccessCards } from "../content/site-content";
 import { BrandLogo } from "./BrandLogo";
 
 type SiteFooterProps = {
@@ -58,12 +58,12 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
               ))}
               <li>
                 <a
-                  href="https://v0-caja-union-pie.vercel.app/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href={directoryLink.href}
+                  target={directoryLink.external ? "_blank" : undefined}
+                  rel={directoryLink.external ? "noreferrer" : undefined}
                   className="text-muted-foreground transition-colors hover:text-primary"
                 >
-                  Union Empresarial
+                  {directoryLink.label}
                 </a>
               </li>
             </ul>

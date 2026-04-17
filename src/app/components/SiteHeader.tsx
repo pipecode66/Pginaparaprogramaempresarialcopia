@@ -1,6 +1,6 @@
 ﻿import { ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
-import type { NavItem } from "../content/site-content";
+import { directoryLink, type NavItem } from "../content/site-content";
 import { BrandLogo } from "./BrandLogo";
 import {
   Accordion,
@@ -89,7 +89,17 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <Button asChild variant="outline" className="border-border/80 bg-background">
+            <a
+              href={directoryLink.href}
+              target={directoryLink.external ? "_blank" : undefined}
+              rel={directoryLink.external ? "noreferrer" : undefined}
+            >
+              {directoryLink.label}
+            </a>
+          </Button>
+
           <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
             <a href="#contacto">Asociate</a>
           </Button>
@@ -156,7 +166,18 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
               })}
             </Accordion>
 
-            <div className="px-4 pb-6">
+            <div className="flex flex-col gap-3 px-4 pb-6">
+              <Button asChild variant="outline" className="w-full border-border/80 bg-background">
+                <a
+                  href={directoryLink.href}
+                  target={directoryLink.external ? "_blank" : undefined}
+                  rel={directoryLink.external ? "noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {directoryLink.label}
+                </a>
+              </Button>
+
               <Button
                 asChild
                 className="w-full bg-accent text-accent-foreground hover:bg-accent/90"

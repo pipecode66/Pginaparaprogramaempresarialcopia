@@ -108,6 +108,12 @@ export type OfficeItem = {
   note: string;
 };
 
+export const directoryLink: NavLink = {
+  label: "Directorio",
+  href: "https://v0-caja-union-pie.vercel.app/",
+  external: true,
+};
+
 export const navItems: NavItem[] = [
   { label: "Inicio", href: "#inicio" },
   {
@@ -166,11 +172,6 @@ export const navItems: NavItem[] = [
         description: "PSE, Banco de Bogota, Efecty y SuperGiros.",
       },
     ],
-  },
-  {
-    label: "Union Empresarial",
-    href: "https://v0-caja-union-pie.vercel.app/",
-    external: true,
   },
   {
     label: "Beneficios",
