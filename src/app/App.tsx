@@ -19,6 +19,7 @@ import { ContactSection } from "./sections/ContactSection";
 import { ConveniosSection } from "./sections/ConveniosSection";
 import { GestoresConveniosSection } from "./sections/GestoresConveniosSection";
 import { HeroSection } from "./sections/HeroSection";
+import { HomeProductSplitSection } from "./sections/HomeProductSplitSection";
 import { HomeSavingsSection } from "./sections/HomeSavingsSection";
 import { NewsSection } from "./sections/NewsSection";
 import { OfficesSection } from "./sections/OfficesSection";
@@ -72,6 +73,7 @@ function HomePage() {
     <>
       <HeroSection />
       <HomeSavingsSection />
+      <HomeProductSplitSection />
     </>
   );
 }
