@@ -18,7 +18,6 @@ const overviewItems = [
   {
     title: "Tarjeta debito / credito",
     description: "La tarjeta adecuada para usted.",
-    href: "/productos/medios-pago",
     icon: CreditCard,
   },
 ];
@@ -30,13 +29,8 @@ export function HomeProductSplitSection() {
         <div className="space-y-5">
           {overviewItems.map((item) => {
             const Icon = item.icon;
-
-            return (
-              <Link
-                key={item.title}
-                to={item.href}
-                className="group grid gap-5 rounded-lg border border-border/80 bg-background p-5 shadow-[0_18px_42px_rgba(7,52,29,0.12)] transition-all hover:-translate-y-1 hover:border-primary/25 hover:shadow-[0_24px_54px_rgba(7,52,29,0.18)] sm:grid-cols-[7rem_1fr] sm:items-center"
-              >
+            const content = (
+              <>
                 <span className="flex size-24 items-center justify-center rounded-lg bg-primary/10 text-primary shadow-inner sm:size-28">
                   <Icon className="size-10 transition-transform group-hover:scale-110" />
                 </span>
@@ -48,6 +42,27 @@ export function HomeProductSplitSection() {
                     {item.description}
                   </span>
                 </span>
+              </>
+            );
+
+            const itemClassName =
+              "group grid gap-5 rounded-lg border border-border/80 bg-background p-5 shadow-[0_18px_42px_rgba(7,52,29,0.12)] transition-all hover:border-primary/25 hover:shadow-[0_24px_54px_rgba(7,52,29,0.18)] sm:grid-cols-[7rem_1fr] sm:items-center";
+
+            if (!item.href) {
+              return (
+                <article key={item.title} className={itemClassName}>
+                  {content}
+                </article>
+              );
+            }
+
+            return (
+              <Link
+                key={item.title}
+                to={item.href}
+                className={`${itemClassName} hover:-translate-y-1`}
+              >
+                {content}
               </Link>
             );
           })}

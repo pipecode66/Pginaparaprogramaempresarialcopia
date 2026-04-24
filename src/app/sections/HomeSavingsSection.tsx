@@ -19,7 +19,6 @@ const featureCards = [
   {
     title: "Tarjeta debito",
     description: "La tarjeta adecuada para usted.",
-    href: "/productos/medios-pago",
     icon: CreditCard,
   },
 ];
@@ -62,12 +61,16 @@ export function HomeSavingsSection() {
                   <p className="max-w-[260px] self-start text-lg leading-6 text-muted-foreground">
                     {card.description}
                   </p>
-                  <Button
-                    asChild
-                    className="self-end rounded-full bg-amber-400 px-8 text-base text-foreground hover:bg-amber-300"
-                  >
-                    <Link to={card.href}>Mas info</Link>
-                  </Button>
+                  {card.href ? (
+                    <Button
+                      asChild
+                      className="self-end rounded-full bg-amber-400 px-8 text-base text-foreground hover:bg-amber-300"
+                    >
+                      <Link to={card.href}>Mas info</Link>
+                    </Button>
+                  ) : (
+                    <span className="self-end h-10" aria-hidden="true" />
+                  )}
                 </div>
               </article>
             );
