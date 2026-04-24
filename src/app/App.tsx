@@ -17,6 +17,7 @@ import { ContactSection } from "./sections/ContactSection";
 import { ConveniosSection } from "./sections/ConveniosSection";
 import { GestoresConveniosSection } from "./sections/GestoresConveniosSection";
 import { HeroSection } from "./sections/HeroSection";
+import { HomeSavingsSection } from "./sections/HomeSavingsSection";
 import { NewsSection } from "./sections/NewsSection";
 import { OfficesSection } from "./sections/OfficesSection";
 import { ProductsSection } from "./sections/ProductsSection";
@@ -64,6 +65,15 @@ function ProductsPage() {
   );
 }
 
+function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <HomeSavingsSection />
+    </>
+  );
+}
+
 function AppShell() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -71,7 +81,7 @@ function AppShell() {
 
       <main>
         <Routes>
-          <Route path="/" element={<HeroSection />} />
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/acerca-de"
             element={
