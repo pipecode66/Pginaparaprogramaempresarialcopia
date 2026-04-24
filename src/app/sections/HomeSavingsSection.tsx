@@ -5,20 +5,24 @@ import { ArrowUpRight, CreditCard, PiggyBank, QrCode, WalletCards } from "lucide
 import { Link } from "react-router";
 import { Button } from "../components/ui/button";
 
-const savingsCards = [
+const featureCards = [
   {
     title: "Productos de ahorro",
     description: "Conozca nuestro portafolio que le ayudara a ahorrar mas.",
     href: "/productos/ahorro-inversion",
-    imagePosition: "object-[42%_20%]",
     icon: PiggyBank,
   },
   {
     title: "Productos de credito",
     description: "Disenamos estos productos especialmente para usted.",
     href: "/productos/creditos",
-    imagePosition: "object-[72%_20%]",
     icon: WalletCards,
+  },
+  {
+    title: "Tarjeta debito",
+    description: "La tarjeta adecuada para usted.",
+    href: "/productos/medios-pago",
+    icon: CreditCard,
   },
 ];
 
@@ -59,35 +63,31 @@ export function HomeSavingsSection() {
         </h2>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {savingsCards.map((card) => {
+          {featureCards.map((card) => {
             const Icon = card.icon;
 
             return (
               <article
                 key={card.title}
-                className="group relative min-h-[350px] overflow-hidden rounded-lg bg-primary text-white shadow-lg"
+                className="group relative min-h-[350px] overflow-hidden rounded-lg border border-border/80 bg-card shadow-[0_22px_48px_rgba(7,52,29,0.18)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_rgba(7,52,29,0.22)]"
               >
-                <img
-                  src="/bannercajaunion.png"
-                  alt=""
-                  className={`absolute inset-0 h-full w-full object-cover ${card.imagePosition} transition-transform duration-500 group-hover:scale-105`}
-                />
-                <div className="absolute inset-0 bg-black/52" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,114,48,0.08),rgba(255,255,255,0)_48%)]" />
+                <div className="absolute -right-14 -top-14 size-40 rounded-full bg-accent/12" />
+                <div className="absolute -bottom-16 left-1/2 size-44 -translate-x-1/2 rounded-full bg-primary/6" />
 
-                <div className="relative flex h-full min-h-[350px] flex-col items-center justify-center px-7 text-center">
-                  <span className="mb-5 inline-flex size-12 items-center justify-center rounded-full border border-white/25 bg-white/15 text-white backdrop-blur-sm">
-                    <Icon className="size-5" />
+                <div className="relative grid h-full min-h-[350px] grid-rows-[64px_86px_72px_54px] justify-items-center px-7 py-10 text-center">
+                  <span className="inline-flex size-14 items-center justify-center self-start rounded-full border border-primary/15 bg-primary/10 text-primary shadow-sm">
+                    <Icon className="size-6" />
                   </span>
-                  <h3 className="max-w-[250px] text-2xl font-bold uppercase leading-tight tracking-wide">
+                  <h3 className="max-w-[250px] self-center text-2xl font-bold uppercase leading-tight tracking-wide text-foreground">
                     {card.title}
                   </h3>
-                  <p className="mt-4 max-w-[260px] text-lg leading-5 text-white/95">
+                  <p className="max-w-[260px] self-start text-lg leading-6 text-muted-foreground">
                     {card.description}
                   </p>
                   <Button
                     asChild
-                    className="mt-8 rounded-full bg-amber-400 px-8 text-base text-foreground hover:bg-amber-300"
+                    className="self-end rounded-full bg-amber-400 px-8 text-base text-foreground hover:bg-amber-300"
                   >
                     <Link to={card.href}>Mas info</Link>
                   </Button>
@@ -95,41 +95,6 @@ export function HomeSavingsSection() {
               </article>
             );
           })}
-
-          <article className="group relative min-h-[350px] overflow-hidden rounded-lg bg-primary text-white shadow-lg">
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,#0b1b12_0%,#007230_54%,#59c13c_100%)]" />
-            <div className="absolute -right-20 -top-16 size-56 rounded-full bg-white/12" />
-            <div className="absolute -bottom-14 left-5 h-44 w-72 rotate-[-17deg] rounded-[22px] border border-white/20 bg-[#123b66] shadow-2xl transition-transform duration-500 group-hover:-translate-y-2">
-              <div className="absolute left-6 top-8 h-9 w-12 rounded-md bg-amber-300" />
-              <div className="absolute bottom-7 left-6 h-3 w-28 rounded-full bg-white/35" />
-              <div className="absolute bottom-7 right-7 text-xl font-bold italic text-white">
-                VISA
-              </div>
-            </div>
-            <div className="absolute bottom-16 right-2 h-40 w-64 rotate-[12deg] rounded-[22px] border border-white/20 bg-[#0f5f31] shadow-2xl transition-transform duration-500 group-hover:translate-y-1">
-              <img
-                src="/brand/logo-cajaunion.png"
-                alt=""
-                className="absolute left-6 top-6 h-8 w-auto brightness-0 invert"
-              />
-              <CreditCard className="absolute bottom-6 left-6 size-8 text-amber-300" />
-            </div>
-
-            <div className="relative flex h-full min-h-[350px] flex-col items-center justify-center px-7 text-center">
-              <h3 className="max-w-[250px] text-2xl font-bold uppercase leading-tight tracking-wide">
-                Tarjeta debito
-              </h3>
-              <p className="mt-4 max-w-[260px] text-lg leading-5 text-white/95">
-                La tarjeta adecuada para usted.
-              </p>
-              <Button
-                asChild
-                className="mt-8 rounded-full bg-amber-400 px-8 text-base text-foreground hover:bg-amber-300"
-              >
-                <Link to="/productos/medios-pago">Mas info</Link>
-              </Button>
-            </div>
-          </article>
 
           <article className="relative min-h-[350px] overflow-hidden rounded-lg border border-border bg-muted/35 shadow-lg">
             <div className="absolute inset-x-0 bottom-0 h-24 bg-accent" />
