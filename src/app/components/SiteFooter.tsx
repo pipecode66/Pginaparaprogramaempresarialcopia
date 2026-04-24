@@ -99,8 +99,7 @@ export function SiteFooter() {
           </div>
 
           <p className="mt-8 flex flex-wrap items-center justify-center gap-1 text-sm text-white md:text-base">
-            <span>Copyright 2026 Cajaunion.coop | Hecho con el</span>
-            <Heart aria-hidden="true" className="size-4 fill-red-500 text-red-500" />
+            <span>Copyright 2026 Caja Unión | Hecho por</span>
             <span>por Zivra Studio</span>
           </p>
         </div>
