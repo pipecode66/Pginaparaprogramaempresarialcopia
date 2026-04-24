@@ -115,92 +115,102 @@ export const directoryLink: NavLink = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "Inicio", href: "#inicio" },
+  { label: "Inicio", href: "/" },
   {
     label: "Acerca de",
-    href: "#",
+    href: "/acerca-de",
     children: [
       {
+        label: "Vista general",
+        href: "/acerca-de",
+        description: "Resumen institucional de Caja Union.",
+      },
+      {
         label: "Nosotros",
-        href: "#nosotros",
+        href: "/acerca-de/nosotros",
         description: "Panorama institucional y enfoque cooperativo.",
       },
       {
         label: "Asambleas",
-        href: "#asambleas",
+        href: "/acerca-de/asambleas",
         description: "Delegados, reglamentos e historial institucional.",
       },
       {
         label: "Politicas, Estatutos y Codigos",
-        href: "#politicas",
+        href: "/acerca-de/politicas",
         description: "Marco documental y buen gobierno.",
       },
       {
         label: "RTE",
-        href: "#rte",
+        href: "/acerca-de/rte",
         description: "Regimen Tributario Especial y soporte publico.",
       },
     ],
   },
   {
     label: "Productos",
-    href: "#productos",
+    href: "/productos",
     children: [
       {
+        label: "Todo el portafolio",
+        href: "/productos",
+        description: "Resumen completo de productos y accesos.",
+      },
+      {
         label: "Ahorro e Inversion",
-        href: "#ahorro-inversion",
+        href: "/productos/ahorro-inversion",
         description: "CDAT, cuentas de ahorro y ahorro programado.",
       },
       {
         label: "Creditos",
-        href: "#creditos",
+        href: "/productos/creditos",
         description: "Lineas para libre inversion, estudio, viajes y mas.",
       },
       {
         label: "Seguros",
-        href: "#seguros",
+        href: "/productos/seguros",
         description: "Proteccion patrimonial y familiar.",
       },
       {
         label: "Portal Transaccional",
-        href: "#portal-transaccional",
+        href: "/productos/portal-transaccional",
         description: "Acceso al portal y soporte de ingreso.",
       },
       {
         label: "Medios de Pago",
-        href: "#medios-pago",
+        href: "/productos/medios-pago",
         description: "PSE, Banco de Bogota, Efecty y SuperGiros.",
       },
     ],
   },
   {
     label: "Beneficios",
-    href: "#beneficios",
+    href: "/beneficios",
     children: [
       {
         label: "Beneficios",
-        href: "#beneficios",
+        href: "/beneficios",
         description: "Valor cooperativo y acompanamiento cercano.",
       },
       {
         label: "Convenios",
-        href: "#convenios",
+        href: "/convenios",
         description: "Beneficios culturales, educativos y recreativos.",
       },
       {
         label: "Gestores de Convenios",
-        href: "#gestores-convenios",
+        href: "/gestores-convenios",
         description: "Espacio reservado para el software en PHP.",
       },
       {
         label: "Noticias",
-        href: "#noticias",
+        href: "/noticias",
         description: "Actualidad institucional y actividades destacadas.",
       },
     ],
   },
-  { label: "Oficinas", href: "#oficinas" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Oficinas", href: "/oficinas" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export const aboutHighlights: AboutHighlight[] = [

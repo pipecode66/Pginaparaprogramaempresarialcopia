@@ -1,4 +1,5 @@
-﻿import { ArrowUpRight, Newspaper } from "lucide-react";
+import { ArrowUpRight, Newspaper } from "lucide-react";
+import { Link } from "react-router";
 import { newsItems } from "../content/site-content";
 import { Button } from "../components/ui/button";
 import {
@@ -28,10 +29,10 @@ export function NewsSection() {
           </div>
 
           <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-            <a href="#contacto">
+            <Link to="/contacto">
               Compartir una novedad
               <ArrowUpRight className="size-4" />
-            </a>
+            </Link>
           </Button>
         </div>
 

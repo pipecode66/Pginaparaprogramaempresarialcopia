@@ -1,4 +1,5 @@
 import { ArrowRight, Handshake } from "lucide-react";
+import { Link } from "react-router";
 import { Button } from "../components/ui/button";
 
 export function HeroSection() {
@@ -31,10 +32,10 @@ export function HeroSection() {
                   size="lg"
                   className="bg-accent text-accent-foreground hover:bg-accent/90"
                 >
-                  <a href="#contacto">
+                  <Link to="/contacto">
                     Solicitar asesoria
                     <ArrowRight className="size-4" />
-                  </a>
+                  </Link>
                 </Button>
 
                 <Button
@@ -43,7 +44,7 @@ export function HeroSection() {
                   variant="outline"
                   className="border-white/40 bg-transparent text-white hover:bg-white/12 hover:text-white"
                 >
-                  <a href="#productos">Ver productos</a>
+                  <Link to="/productos">Ver productos</Link>
                 </Button>
               </div>
 

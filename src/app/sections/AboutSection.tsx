@@ -11,21 +11,35 @@ import {
   CardTitle,
 } from "../components/ui/card";
 
-export function AboutSection() {
+type AboutSectionProps = {
+  itemId?: string;
+};
+
+export function AboutSection({ itemId }: AboutSectionProps) {
+  const selectedItem = itemId
+    ? aboutItems.find((item) => item.id === itemId)
+    : undefined;
+  const visibleItems = selectedItem ? [selectedItem] : aboutItems;
+
   return (
-    <section id="acerca-de" className="scroll-mt-24 bg-muted/45 py-20">
+    <section
+      id={selectedItem?.id ?? "acerca-de"}
+      className="scroll-mt-24 bg-muted/45 py-20"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold tracking-wide text-primary uppercase">
             Acerca de
           </p>
           <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">
-            Un espacio para explicar quienes somos, como trabajamos y que respaldo
-            institucional tiene Caja Union
+            {selectedItem
+              ? selectedItem.title
+              : "Un espacio para explicar quienes somos, como trabajamos y que respaldo institucional tiene Caja Union"}
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Este bloque consolida el apartado institucional solicitado con foco en
-            claridad comercial y lectura rapida para asociados, empresas y visitantes.
+            {selectedItem
+              ? selectedItem.description
+              : "Este bloque consolida el apartado institucional solicitado con foco en claridad comercial y lectura rapida para asociados, empresas y visitantes."}
           </p>
         </div>
 
@@ -60,8 +74,8 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {aboutItems.map((item) => {
+          <div className={`grid gap-4 ${selectedItem ? "" : "md:grid-cols-2"}`}>
+            {visibleItems.map((item) => {
               const Icon = item.icon;
 
               return (

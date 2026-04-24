@@ -1,5 +1,6 @@
-﻿import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
+import { Link, NavLink, useLocation } from "react-router";
 import { directoryLink, type NavItem } from "../content/site-content";
 import { BrandLogo } from "./BrandLogo";
 import {
@@ -27,36 +28,87 @@ type SiteHeaderProps = {
   navItems: NavItem[];
 };
 
+const desktopLinkClass =
+  "rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+const mobileLinkClass =
+  "block rounded-md px-3 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+function isInternalLink(href: string) {
+  return href.startsWith("/");
+}
+
+function pathMatches(href: string, pathname: string) {
+  if (!isInternalLink(href)) {
+    return false;
+  }
+
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function navItemIsActive(item: NavItem, pathname: string) {
+  return (
+    pathMatches(item.href, pathname) ||
+    Boolean(item.children?.some((child) => pathMatches(child.href, pathname)))
+  );
+}
+
 export function SiteHeader({ navItems }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <a href="#inicio" aria-label="Ir al inicio de Caja Union">
+        <Link to="/" aria-label="Ir al inicio de Caja Union">
           <BrandLogo />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Principal">
           {navItems.map((item) => {
             if (!item.children?.length) {
+              if (isInternalLink(item.href)) {
+                return (
+                  <NavLink
+                    key={item.label}
+                    to={item.href}
+                    className={({ isActive }) =>
+                      `${desktopLinkClass} ${isActive ? "bg-muted text-primary" : ""}`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                );
+              }
+
               return (
                 <a
                   key={item.label}
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noreferrer" : undefined}
-                  className="rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className={desktopLinkClass}
                 >
                   {item.label}
                 </a>
               );
             }
 
+            const isActive = navItemIsActive(item, pathname);
+
             return (
               <DropdownMenu key={item.label}>
                 <DropdownMenuTrigger asChild>
-                  <button className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <button
+                    type="button"
+                    className={`inline-flex items-center gap-1 ${desktopLinkClass} ${
+                      isActive ? "bg-muted text-primary" : ""
+                    }`}
+                  >
                     {item.label}
                     <ChevronDown className="size-4" />
                   </button>
@@ -71,16 +123,27 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                       asChild
                       className="rounded-xl px-3 py-3 text-center"
                     >
-                      <a
-                        href={child.href}
-                        target={child.external ? "_blank" : undefined}
-                        rel={child.external ? "noreferrer" : undefined}
-                        className="block w-full"
-                      >
-                        <span className="block font-semibold text-foreground">
+                      {isInternalLink(child.href) ? (
+                        <NavLink
+                          to={child.href}
+                          className={({ isActive }) =>
+                            `block w-full font-semibold ${
+                              isActive ? "text-primary" : "text-foreground"
+                            }`
+                          }
+                        >
                           {child.label}
-                        </span>
-                      </a>
+                        </NavLink>
+                      ) : (
+                        <a
+                          href={child.href}
+                          target={child.external ? "_blank" : undefined}
+                          rel={child.external ? "noreferrer" : undefined}
+                          className="block w-full font-semibold text-foreground"
+                        >
+                          {child.label}
+                        </a>
+                      )}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
@@ -101,7 +164,7 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
           </Button>
 
           <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-            <a href="#contacto">Asociate</a>
+            <Link to="/contacto">Asociate</Link>
           </Button>
         </div>
 
@@ -126,6 +189,23 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
             <Accordion type="multiple" className="px-4" aria-label="Menu movil">
               {navItems.map((item) => {
                 if (!item.children?.length) {
+                  if (isInternalLink(item.href)) {
+                    return (
+                      <NavLink
+                        key={item.label}
+                        to={item.href}
+                        onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                          `${mobileLinkClass} ${
+                            isActive ? "bg-muted text-primary" : ""
+                          }`
+                        }
+                      >
+                        {item.label}
+                      </NavLink>
+                    );
+                  }
+
                   return (
                     <a
                       key={item.label}
@@ -133,7 +213,7 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                       target={item.external ? "_blank" : undefined}
                       rel={item.external ? "noreferrer" : undefined}
                       onClick={() => setOpen(false)}
-                      className="block rounded-md px-3 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className={mobileLinkClass}
                     >
                       {item.label}
                     </a>
@@ -147,18 +227,33 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                     </AccordionTrigger>
                     <AccordionContent className="px-3 pb-3">
                       <div className="flex flex-col gap-2">
-                        {item.children.map((child) => (
-                          <a
-                            key={child.href}
-                            href={child.href}
-                            target={child.external ? "_blank" : undefined}
-                            rel={child.external ? "noreferrer" : undefined}
-                            onClick={() => setOpen(false)}
-                            className="rounded-md px-3 py-2 text-center text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
-                          >
-                            {child.label}
-                          </a>
-                        ))}
+                        {item.children.map((child) =>
+                          isInternalLink(child.href) ? (
+                            <NavLink
+                              key={child.href}
+                              to={child.href}
+                              onClick={() => setOpen(false)}
+                              className={({ isActive }) =>
+                                `rounded-md px-3 py-2 text-center text-sm font-medium transition-colors hover:bg-muted hover:text-primary ${
+                                  isActive ? "bg-muted text-primary" : "text-foreground"
+                                }`
+                              }
+                            >
+                              {child.label}
+                            </NavLink>
+                          ) : (
+                            <a
+                              key={child.href}
+                              href={child.href}
+                              target={child.external ? "_blank" : undefined}
+                              rel={child.external ? "noreferrer" : undefined}
+                              onClick={() => setOpen(false)}
+                              className="rounded-md px-3 py-2 text-center text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+                            >
+                              {child.label}
+                            </a>
+                          )
+                        )}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
@@ -182,9 +277,9 @@ export function SiteHeader({ navItems }: SiteHeaderProps) {
                 asChild
                 className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
               >
-                <a href="#contacto" onClick={() => setOpen(false)}>
+                <Link to="/contacto" onClick={() => setOpen(false)}>
                   Asociate
-                </a>
+                </Link>
               </Button>
             </div>
           </SheetContent>

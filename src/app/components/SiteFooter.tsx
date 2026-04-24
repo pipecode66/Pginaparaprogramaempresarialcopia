@@ -1,10 +1,15 @@
-﻿import type { NavItem } from "../content/site-content";
+import { Link } from "react-router";
+import type { NavItem } from "../content/site-content";
 import { directoryLink, serviceAccessCards } from "../content/site-content";
 import { BrandLogo } from "./BrandLogo";
 
 type SiteFooterProps = {
   navItems: NavItem[];
 };
+
+function isInternalLink(href: string) {
+  return href.startsWith("/");
+}
 
 export function SiteFooter({ navItems }: SiteFooterProps) {
   const currentYear = new Date().getFullYear();
@@ -14,9 +19,9 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
       <div className="container mx-auto px-4 py-14">
         <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           <div className="space-y-4">
-            <a href="#inicio" aria-label="Caja Union inicio">
+            <Link to="/" aria-label="Caja Union inicio">
               <BrandLogo />
-            </a>
+            </Link>
             <p className="max-w-sm text-sm text-muted-foreground">
               Cooperativa de ahorro y credito orientada al bienestar financiero
               de sus asociados con enfoque humano, responsable y sostenible.
@@ -28,14 +33,23 @@ export function SiteFooter({ navItems }: SiteFooterProps) {
             <ul className="space-y-3 text-sm">
               {navItems.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
-                    className="text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {item.label}
-                  </a>
+                  {isInternalLink(item.href) ? (
+                    <Link
+                      to={item.href}
+                      className="text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noreferrer" : undefined}
+                      className="text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
