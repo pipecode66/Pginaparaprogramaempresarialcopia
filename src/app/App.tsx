@@ -7,6 +7,7 @@ import {
   useLocation,
   useParams,
 } from "react-router";
+import { FloatingServiceAccess } from "./components/FloatingServiceAccess";
 import { FloatingSocialLinks } from "./components/FloatingSocialLinks";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
@@ -102,6 +103,14 @@ function AppShell() {
           />
           <Route path="/productos/:sectionId" element={<ProductsPage />} />
           <Route
+            path="/metodos-de-pago"
+            element={
+              <SectionPage>
+                <ProductsSection accessCardId="medios-pago" />
+              </SectionPage>
+            }
+          />
+          <Route
             path="/beneficios"
             element={
               <SectionPage>
@@ -155,6 +164,7 @@ function AppShell() {
 
       <SiteFooter navItems={navItems} />
       <FloatingSocialLinks />
+      <FloatingServiceAccess />
       <WhatsAppButton />
     </div>
   );
