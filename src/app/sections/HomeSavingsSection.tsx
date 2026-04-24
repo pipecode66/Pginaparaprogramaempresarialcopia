@@ -1,3 +1,6 @@
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import { ArrowUpRight, CreditCard, PiggyBank, QrCode, WalletCards } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "../components/ui/button";
@@ -16,6 +19,24 @@ const savingsCards = [
     href: "/productos/creditos",
     imagePosition: "object-[72%_20%]",
     icon: WalletCards,
+  },
+];
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/micajaunion/",
+    icon: FacebookIcon,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/caja_union/",
+    icon: InstagramIcon,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/channel/UCRide2uQKnErEy74KYypiGA",
+    icon: YouTubeIcon,
   },
 ];
 
@@ -140,16 +161,23 @@ export function HomeSavingsSection() {
                 })}
               </div>
 
-              <div className="mt-5 flex items-center gap-3">
-                <span className="inline-flex size-10 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">
-                  f
-                </span>
-                <span className="inline-flex size-10 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">
-                  ig
-                </span>
-                <span className="inline-flex size-10 items-center justify-center rounded-full bg-foreground text-xs font-bold text-background">
-                  in
-                </span>
+              <div className="mt-5 flex w-full justify-end gap-3 pr-2">
+                {socialLinks.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Abrir ${item.label} de Caja Union`}
+                      className="inline-flex size-11 items-center justify-center rounded-full bg-foreground text-background shadow-md transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <Icon className="size-5" fontSize="inherit" />
+                    </a>
+                  );
+                })}
               </div>
 
               <Link
