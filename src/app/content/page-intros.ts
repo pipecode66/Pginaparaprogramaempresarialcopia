@@ -43,7 +43,7 @@ export const pageIntros = {
   },
   news: {
     title: "Noticias",
-    breadcrumbs: [homeCrumb, benefitsCrumb, { label: "Noticias" }],
+    breadcrumbs: [homeCrumb, { label: "Noticias" }],
     headline: "Mantente al día con la actualidad de Caja Unión",
   },
   offices: {

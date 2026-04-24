@@ -202,11 +202,6 @@ export const navItems: NavItem[] = [
         href: "/gestores-convenios",
         description: "Espacio reservado para el software en PHP.",
       },
-      {
-        label: "Noticias",
-        href: "/noticias",
-        description: "Actualidad institucional y actividades destacadas.",
-      },
     ],
   },
   { label: "Oficinas", href: "/oficinas" },
