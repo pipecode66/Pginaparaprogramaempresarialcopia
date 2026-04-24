@@ -1,6 +1,3 @@
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import { ArrowUpRight, CreditCard, PiggyBank, QrCode, WalletCards } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
@@ -24,24 +21,6 @@ const featureCards = [
     description: "La tarjeta adecuada para usted.",
     href: "/productos/medios-pago",
     icon: CreditCard,
-  },
-];
-
-const socialLinks = [
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/micajaunion/",
-    icon: FacebookIcon,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/caja_union/",
-    icon: InstagramIcon,
-  },
-  {
-    label: "YouTube",
-    href: "https://www.youtube.com/channel/UCRide2uQKnErEy74KYypiGA",
-    icon: YouTubeIcon,
   },
 ];
 
@@ -162,25 +141,6 @@ export function HomeSavingsSection() {
                       key={index}
                       className={`rounded-sm ${active ? "bg-foreground" : "bg-muted"}`}
                     />
-                  );
-                })}
-              </div>
-
-              <div className="mt-5 flex w-full justify-end gap-3 pr-2">
-                {socialLinks.map((item) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Abrir ${item.label} de Caja Union`}
-                      className="inline-flex size-11 items-center justify-center rounded-full bg-foreground text-background shadow-md transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <Icon className="size-5" fontSize="inherit" />
-                    </a>
                   );
                 })}
               </div>

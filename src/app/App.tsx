@@ -7,6 +7,7 @@ import {
   useLocation,
   useParams,
 } from "react-router";
+import { FloatingSocialLinks } from "./components/FloatingSocialLinks";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { WhatsAppButton } from "./components/WhatsAppButton";
@@ -153,6 +154,7 @@ function AppShell() {
       </main>
 
       <SiteFooter navItems={navItems} />
+      <FloatingSocialLinks />
       <WhatsAppButton />
     </div>
   );
