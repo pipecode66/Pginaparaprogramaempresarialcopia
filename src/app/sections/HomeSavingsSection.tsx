@@ -2,6 +2,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { ArrowUpRight, CreditCard, PiggyBank, QrCode, WalletCards } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Button } from "../components/ui/button";
 
@@ -44,7 +45,39 @@ const socialLinks = [
   },
 ];
 
+const typewriterTerms = ["Ahorro", "Credito", "Tarjeta debito/credito"];
+
 export function HomeSavingsSection() {
+  const [termIndex, setTermIndex] = useState(0);
+  const [visibleChars, setVisibleChars] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentTerm = typewriterTerms[termIndex];
+    const isComplete = !isDeleting && visibleChars === currentTerm.length;
+    const isEmpty = isDeleting && visibleChars === 0;
+    const delay = isComplete ? 1400 : isEmpty ? 260 : isDeleting ? 45 : 80;
+
+    const timeoutId = window.setTimeout(() => {
+      if (isComplete) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isEmpty) {
+        setIsDeleting(false);
+        setTermIndex((currentIndex) => (currentIndex + 1) % typewriterTerms.length);
+        return;
+      }
+
+      setVisibleChars((currentLength) => currentLength + (isDeleting ? -1 : 1));
+    }, delay);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isDeleting, termIndex, visibleChars]);
+
+  const typedTerm = typewriterTerms[termIndex].slice(0, visibleChars);
+
   return (
     <section className="relative overflow-hidden bg-background py-18 md:py-24">
       <div
@@ -57,9 +90,14 @@ export function HomeSavingsSection() {
       </div>
 
       <div className="container relative mx-auto px-4">
-        <h2 className="text-center font-display text-3xl font-bold md:text-4xl">
+        <h2 className="flex min-h-[3.25rem] flex-wrap items-center justify-center gap-x-3 text-center font-display text-3xl font-bold md:text-4xl">
           <span className="text-primary">Obten tu</span>{" "}
-          <span className="text-amber-400">Ahorro</span>
+          <span
+            aria-live="polite"
+            className="inline-flex min-w-[13ch] justify-start border-r-2 border-amber-400 pr-1 text-amber-400"
+          >
+            {typedTerm || "\u00a0"}
+          </span>
         </h2>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
