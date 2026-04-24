@@ -19,6 +19,7 @@ import { ContactSection } from "./sections/ContactSection";
 import { ConveniosSection } from "./sections/ConveniosSection";
 import { GestoresConveniosSection } from "./sections/GestoresConveniosSection";
 import { HeroSection } from "./sections/HeroSection";
+import { HomeContactMapSection } from "./sections/HomeContactMapSection";
 import { HomeNewsEventsSection } from "./sections/HomeNewsEventsSection";
 import { HomeProductSplitSection } from "./sections/HomeProductSplitSection";
 import { HomeSavingsSection } from "./sections/HomeSavingsSection";
@@ -76,6 +77,7 @@ function HomePage() {
       <HomeSavingsSection />
       <HomeProductSplitSection />
       <HomeNewsEventsSection />
+      <HomeContactMapSection />
     </>
   );
 }
@@ -182,7 +184,7 @@ function AppShell() {
         </Routes>
       </main>
 
-      <SiteFooter navItems={navItems} />
+      <SiteFooter />
       <FloatingSocialLinks />
       <FloatingServiceAccess />
       <WhatsAppButton />
