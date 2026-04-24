@@ -94,9 +94,11 @@ export function HomeSavingsSection() {
           <span className="text-primary">Obten tu</span>{" "}
           <span
             aria-live="polite"
-            className="inline-flex min-w-[13ch] justify-start border-r-2 border-amber-400 pr-1 text-amber-400"
+            className="inline-flex min-w-[13ch] justify-start text-amber-400"
           >
-            {typedTerm || "\u00a0"}
+            <span className="border-r-2 border-amber-400 pr-1">
+              {typedTerm || "\u00a0"}
+            </span>
           </span>
         </h2>
 
