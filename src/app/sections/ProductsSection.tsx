@@ -14,6 +14,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 const defaultCategoryId = productCategories[0]?.id ?? "";
 const categoryIds = new Set(productCategories.map((category) => category.id));
 const accessCardIds = new Set(serviceAccessCards.map((card) => card.id));
+const categoryRoutes: Record<string, string> = {
+  "ahorro-inversion": "/ahorro",
+  creditos: "/credito",
+};
 
 type ProductsSectionProps = {
   accessCardId?: string;
@@ -43,7 +47,7 @@ export function ProductsSection({
 
   const handleTabChange = (nextTab: string) => {
     setActiveTab(nextTab);
-    navigate(`/productos/${nextTab}`);
+    navigate(categoryRoutes[nextTab] ?? `/productos/${nextTab}`);
   };
 
   return (

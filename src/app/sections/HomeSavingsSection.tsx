@@ -7,13 +7,13 @@ const featureCards = [
   {
     title: "Productos de ahorro",
     description: "Conozca nuestro portafolio que le ayudara a ahorrar mas.",
-    href: "/productos/ahorro-inversion",
+    href: "/ahorro",
     icon: PiggyBank,
   },
   {
     title: "Productos de credito",
     description: "Disenamos estos productos especialmente para usted.",
-    href: "/productos/creditos",
+    href: "/credito",
     icon: WalletCards,
   },
   {

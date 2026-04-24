@@ -105,6 +105,22 @@ function AppShell() {
           />
           <Route path="/productos/:sectionId" element={<ProductsPage />} />
           <Route
+            path="/ahorro"
+            element={
+              <SectionPage>
+                <ProductsSection categoryId="ahorro-inversion" />
+              </SectionPage>
+            }
+          />
+          <Route
+            path="/credito"
+            element={
+              <SectionPage>
+                <ProductsSection categoryId="creditos" />
+              </SectionPage>
+            }
+          />
+          <Route
             path="/metodos-de-pago"
             element={
               <SectionPage>

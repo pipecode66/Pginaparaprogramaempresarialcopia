@@ -158,12 +158,12 @@ export const navItems: NavItem[] = [
       },
       {
         label: "Ahorro e Inversion",
-        href: "/productos/ahorro-inversion",
+        href: "/ahorro",
         description: "CDAT, cuentas de ahorro y ahorro programado.",
       },
       {
         label: "Creditos",
-        href: "/productos/creditos",
+        href: "/credito",
         description: "Lineas para libre inversion, estudio, viajes y mas.",
       },
       {
