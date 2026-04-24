@@ -69,11 +69,11 @@ export function HomeSavingsSection() {
       </div>
 
       <div className="container relative mx-auto px-4">
-        <h2 className="flex min-h-[3.25rem] flex-wrap items-center justify-center gap-x-3 text-center font-display text-3xl font-bold md:text-4xl">
+        <h2 className="min-h-[3.25rem] text-center font-display text-3xl font-bold md:text-4xl">
           <span className="text-primary">Obten tu</span>{" "}
           <span
             aria-live="polite"
-            className="inline-flex min-w-[13ch] justify-start text-amber-400"
+            className="inline-flex text-amber-400"
           >
             <span className="border-r-2 border-amber-400 pr-1">
               {typedTerm || "\u00a0"}
