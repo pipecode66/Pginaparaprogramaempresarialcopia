@@ -9,9 +9,15 @@ import {
 } from "react-router";
 import { FloatingServiceAccess } from "./components/FloatingServiceAccess";
 import { FloatingSocialLinks } from "./components/FloatingSocialLinks";
+import { PageIntro, type PageIntroData } from "./components/PageIntro";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import {
+  getAboutPageIntro,
+  getProductsPageIntro,
+  pageIntros,
+} from "./content/page-intros";
 import { navItems } from "./content/site-content";
 import { AboutSection } from "./sections/AboutSection";
 import { BenefitsSection } from "./sections/BenefitsSection";
@@ -39,17 +45,23 @@ function ScrollToTop() {
 
 type SectionPageProps = {
   children: ReactNode;
+  intro: PageIntroData;
 };
 
-function SectionPage({ children }: SectionPageProps) {
-  return <div className="pt-20">{children}</div>;
+function SectionPage({ children, intro }: SectionPageProps) {
+  return (
+    <div className="pt-20">
+      <PageIntro {...intro} />
+      {children}
+    </div>
+  );
 }
 
 function AboutPage() {
   const { itemId } = useParams();
 
   return (
-    <SectionPage>
+    <SectionPage intro={getAboutPageIntro(itemId)}>
       <AboutSection itemId={itemId} />
     </SectionPage>
   );
@@ -61,7 +73,7 @@ function ProductsPage() {
     sectionId === "portal-transaccional" || sectionId === "medios-pago";
 
   return (
-    <SectionPage>
+    <SectionPage intro={getProductsPageIntro(sectionId)}>
       <ProductsSection
         accessCardId={isAccessSection ? sectionId : undefined}
         categoryId={!isAccessSection ? sectionId : undefined}
@@ -93,7 +105,7 @@ function AppShell() {
           <Route
             path="/acerca-de"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.about}>
                 <AboutSection />
               </SectionPage>
             }
@@ -102,7 +114,7 @@ function AppShell() {
           <Route
             path="/productos"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.products}>
                 <ProductsSection />
               </SectionPage>
             }
@@ -111,7 +123,7 @@ function AppShell() {
           <Route
             path="/ahorro"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.savings}>
                 <ProductsSection categoryId="ahorro-inversion" />
               </SectionPage>
             }
@@ -119,7 +131,7 @@ function AppShell() {
           <Route
             path="/credito"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.credit}>
                 <ProductsSection categoryId="creditos" />
               </SectionPage>
             }
@@ -127,7 +139,7 @@ function AppShell() {
           <Route
             path="/metodos-de-pago"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.paymentMethods}>
                 <ProductsSection accessCardId="medios-pago" />
               </SectionPage>
             }
@@ -135,7 +147,7 @@ function AppShell() {
           <Route
             path="/beneficios"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.benefits}>
                 <BenefitsSection />
               </SectionPage>
             }
@@ -143,7 +155,7 @@ function AppShell() {
           <Route
             path="/convenios"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.convenios}>
                 <ConveniosSection />
               </SectionPage>
             }
@@ -151,7 +163,7 @@ function AppShell() {
           <Route
             path="/gestores-convenios"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.gestoresConvenios}>
                 <GestoresConveniosSection />
               </SectionPage>
             }
@@ -159,7 +171,7 @@ function AppShell() {
           <Route
             path="/noticias"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.news}>
                 <NewsSection />
               </SectionPage>
             }
@@ -167,7 +179,7 @@ function AppShell() {
           <Route
             path="/oficinas"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.offices}>
                 <OfficesSection />
               </SectionPage>
             }
@@ -175,7 +187,7 @@ function AppShell() {
           <Route
             path="/contacto"
             element={
-              <SectionPage>
+              <SectionPage intro={pageIntros.contact}>
                 <ContactSection />
               </SectionPage>
             }
