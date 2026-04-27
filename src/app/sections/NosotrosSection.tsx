@@ -1,7 +1,6 @@
 import {
   BadgeCheck,
   BriefcaseBusiness,
-  ClipboardList,
   FileCheck2,
   FileText,
   HeartHandshake,
@@ -13,6 +12,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { BrandLogo } from "../components/BrandLogo";
+import { AsambleasContent } from "./AsambleasSection";
 
 const internalNavItems = [
   { href: "#nosotros-presentacion", label: "Nosotros" },
@@ -89,12 +89,6 @@ const policyDocuments = [
 ];
 
 const supportCards = [
-  {
-    id: "asambleas",
-    icon: ClipboardList,
-    title: "Asambleas",
-    text: "Organizamos informes, reglamentos, convocatorias y balance social para que la gestión institucional pueda consultarse con claridad.",
-  },
   {
     id: "rte",
     icon: FileCheck2,
@@ -320,6 +314,10 @@ export function NosotrosSection() {
                   ))}
                 </div>
               </div>
+            </section>
+
+            <section id="asambleas" className="scroll-mt-28">
+              <AsambleasContent />
             </section>
 
             <section className="grid scroll-mt-28 gap-5 md:grid-cols-2">

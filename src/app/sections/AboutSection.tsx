@@ -3,6 +3,7 @@ import {
   aboutHighlights,
   aboutItems,
 } from "../content/site-content";
+import { AsambleasSection } from "./AsambleasSection";
 import { NosotrosSection } from "./NosotrosSection";
 import { Button } from "../components/ui/button";
 import {
@@ -19,6 +20,10 @@ type AboutSectionProps = {
 export function AboutSection({ itemId }: AboutSectionProps) {
   if (itemId === "nosotros") {
     return <NosotrosSection />;
+  }
+
+  if (itemId === "asambleas") {
+    return <AsambleasSection />;
   }
 
   const selectedItem = itemId
