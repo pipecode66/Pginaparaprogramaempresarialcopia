@@ -1,7 +1,11 @@
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { productCategories, serviceAccessCards } from "../content/site-content";
+import {
+  productCategories,
+  serviceAccessCards,
+  type ProductItem,
+} from "../content/site-content";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -103,98 +107,105 @@ export function ProductsSection({
                     </p>
                   </div>
 
-                  <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                    {category.items.map((product) => {
-                      const Icon = product.icon;
+                  {category.id === "creditos" ? (
+                    <CreditProductsShowcase products={category.items} />
+                  ) : (
+                    <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                      {category.items.map((product) => {
+                        const Icon = product.icon;
 
-                      return (
-                        <Card
-                          key={product.title}
-                          className="border-border/80 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                        >
-                          <CardHeader className="pb-2">
-                            <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
-                              <Icon className="size-5" />
-                            </span>
-                            <CardTitle className="text-xl font-bold">
-                              {product.title}
-                            </CardTitle>
-                          </CardHeader>
+                        return (
+                          <Card
+                            key={product.title}
+                            className="border-border/80 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                          >
+                            <CardHeader className="pb-2">
+                              <span className="mb-3 inline-flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
+                                <Icon className="size-5" />
+                              </span>
+                              <CardTitle className="text-xl font-bold">
+                                {product.title}
+                              </CardTitle>
+                            </CardHeader>
 
-                          <CardContent className="space-y-5 text-sm text-muted-foreground">
-                            <p>{product.description}</p>
+                            <CardContent className="space-y-5 text-sm text-muted-foreground">
+                              <p>{product.description}</p>
 
-                            <div className="grid gap-3 rounded-2xl border border-border/70 bg-muted/45 p-4">
-                              <div>
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                                  Tasa
-                                </p>
-                                <p className="mt-1 text-sm font-medium text-foreground">
-                                  {product.rate}
-                                </p>
+                              <div className="grid gap-3 rounded-2xl border border-border/70 bg-muted/45 p-4">
+                                <div>
+                                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                    Tasa
+                                  </p>
+                                  <p className="mt-1 text-sm font-medium text-foreground">
+                                    {product.rate}
+                                  </p>
+                                </div>
+                                <div>
+                                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                    Plazo
+                                  </p>
+                                  <p className="mt-1 text-sm font-medium text-foreground">
+                                    {product.term}
+                                  </p>
+                                </div>
                               </div>
-                              <div>
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                                  Plazo
-                                </p>
-                                <p className="mt-1 text-sm font-medium text-foreground">
-                                  {product.term}
-                                </p>
-                              </div>
-                            </div>
 
-                            <div className="space-y-3">
-                              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                                Características
-                              </p>
-                              <ul className="space-y-2">
-                                {product.highlights.map((highlight) => (
-                                  <li key={highlight} className="flex items-start gap-2">
-                                    <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                                    <span>{highlight}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            {product.requirements?.length ? (
-                              <div className="space-y-3 rounded-2xl bg-primary/5 p-4">
+                              <div className="space-y-3">
                                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                                  Requisitos
+                                  Características
                                 </p>
                                 <ul className="space-y-2">
-                                  {product.requirements.map((requirement) => (
+                                  {product.highlights.map((highlight) => (
                                     <li
-                                      key={requirement}
+                                      key={highlight}
                                       className="flex items-start gap-2"
                                     >
-                                      <Check className="mt-0.5 size-4 shrink-0 text-accent" />
-                                      <span>{requirement}</span>
+                                      <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                                      <span>{highlight}</span>
                                     </li>
                                   ))}
                                 </ul>
                               </div>
-                            ) : null}
 
-                            <Button
-                              asChild
-                              variant="ghost"
-                              className="w-full justify-between border border-border/80 bg-muted/50 text-foreground hover:bg-accent hover:text-accent-foreground"
-                            >
-                              <a
-                                href={productWhatsAppUrl}
-                                target="_blank"
-                                rel="noreferrer"
+                              {product.requirements?.length ? (
+                                <div className="space-y-3 rounded-2xl bg-primary/5 p-4">
+                                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                    Requisitos
+                                  </p>
+                                  <ul className="space-y-2">
+                                    {product.requirements.map((requirement) => (
+                                      <li
+                                        key={requirement}
+                                        className="flex items-start gap-2"
+                                      >
+                                        <Check className="mt-0.5 size-4 shrink-0 text-accent" />
+                                        <span>{requirement}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ) : null}
+
+                              <Button
+                                asChild
+                                variant="ghost"
+                                className="w-full justify-between border border-border/80 bg-muted/50 text-foreground hover:bg-accent hover:text-accent-foreground"
                               >
-                                {product.cta}
-                                <ArrowUpRight className="size-4" />
-                              </a>
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      );
-                    })}
-                  </div>
+                                <a
+                                  href={productWhatsAppUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  {product.cta}
+                                  <ArrowUpRight className="size-4" />
+                                </a>
+                              </Button>
+                            </CardContent>
+                          </Card>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               </TabsContent>
             ))}
@@ -265,6 +276,182 @@ export function ProductsSection({
             );
           })}
         </div>
+      </div>
+    </section>
+  );
+}
+
+type CreditProductsShowcaseProps = {
+  products: ProductItem[];
+};
+
+function CreditProductsShowcase({ products }: CreditProductsShowcaseProps) {
+  return (
+    <div className="mt-10 space-y-14">
+      {products.map((product) => {
+        const Icon = product.icon;
+
+        return (
+          <article key={product.title} className="scroll-mt-28">
+            <h4 className="mx-auto max-w-5xl text-center font-display text-2xl font-bold uppercase leading-tight text-primary md:text-3xl">
+              {product.headline ?? product.title}
+            </h4>
+
+            <div className="mt-7 grid gap-5 lg:grid-cols-3">
+              <div className="relative overflow-hidden rounded-lg bg-[#ffab2f] p-7 text-foreground shadow-[0_22px_52px_rgba(108,64,0,0.16)] md:p-9">
+                <CreditPanelPattern />
+                <div className="relative space-y-8">
+                  <CreditChecklist title="Características" items={product.highlights} />
+                  <CreditChecklist title="Requisitos" items={product.requirements} />
+                </div>
+              </div>
+
+              <div className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-lg bg-accent p-8 text-center text-accent-foreground shadow-[0_22px_52px_rgba(26,98,28,0.18)]">
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.22)_0,rgba(255,255,255,0.1)_28%,transparent_58%)]"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute left-1/2 top-1/2 size-52 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 md:size-72"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute left-1/2 top-1/2 size-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 md:size-44"
+                />
+
+                <div className="relative flex flex-col items-center">
+                  <span className="mb-8 text-3xl font-extrabold tracking-normal text-white md:text-4xl">
+                    cajaunión
+                  </span>
+                  <span className="flex size-28 items-center justify-center rounded-full bg-white/18 text-white shadow-inner md:size-36">
+                    <Icon className="size-14 md:size-16" />
+                  </span>
+                  <p className="mt-7 max-w-xs text-xl font-bold uppercase leading-tight text-white">
+                    {product.title}
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden rounded-lg bg-[#ffcc3d] p-7 text-foreground shadow-[0_22px_52px_rgba(108,64,0,0.14)] md:p-9">
+                <CreditPanelPattern />
+                <div className="relative flex h-full flex-col justify-center gap-8">
+                  <CreditChecklist title="Beneficios" items={product.benefits} />
+
+                  <div className="text-center">
+                    <p className="font-display text-2xl font-bold uppercase text-primary">
+                      Tasas y tarifas
+                    </p>
+                    <Button
+                      asChild
+                      className="mt-5 rounded-full bg-accent px-10 py-6 text-base font-bold text-white hover:bg-accent/90"
+                    >
+                      <a
+                        href={productWhatsAppUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Click aquí
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+
+      <CreditAdvisory />
+    </div>
+  );
+}
+
+function CreditPanelPattern() {
+  return (
+    <>
+      <div
+        aria-hidden="true"
+        className="absolute -right-12 top-16 size-56 rounded-full border border-white/10 md:size-72"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute right-16 top-32 size-32 rounded-full border border-white/10 md:size-44"
+      />
+    </>
+  );
+}
+
+function CreditChecklist({
+  items,
+  title,
+}: {
+  items?: string[];
+  title: string;
+}) {
+  if (!items?.length) {
+    return null;
+  }
+
+  return (
+    <div className="space-y-4">
+      <h5 className="font-display text-2xl font-bold uppercase text-primary">
+        {title}
+      </h5>
+      <ul className="space-y-3 text-base leading-7 md:text-lg">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-3">
+            <Check className="mt-1 size-5 shrink-0 rounded-full bg-primary p-1 text-white" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function CreditAdvisory() {
+  return (
+    <section className="grid items-center gap-0 overflow-hidden rounded-lg border border-border/70 bg-background shadow-[0_24px_68px_rgba(7,52,29,0.12)] lg:grid-cols-[0.45fr_1fr]">
+      <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-accent p-10 text-white">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.22)_0,rgba(255,255,255,0.1)_32%,transparent_62%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-1/2 size-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12"
+        />
+        <div className="relative text-center">
+          <span className="text-3xl font-extrabold tracking-normal md:text-4xl">
+            cajaunión
+          </span>
+          <div className="mx-auto mt-8 flex size-32 items-center justify-center rounded-full bg-white/18 shadow-inner">
+            <MessageCircle className="size-16" />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white p-8 md:p-12">
+        <p className="text-xl font-bold text-primary">¿Necesitas asesoría?</p>
+        <h3 className="mt-4 font-display text-3xl font-bold text-primary md:text-4xl">
+          No dudes en contactarnos
+        </h3>
+        <p className="mt-5 max-w-4xl text-base leading-7 text-muted-foreground md:text-lg">
+          ¡Entendemos que solicitar un crédito puede ser un proceso complicado y a
+          veces abrumador! Por eso, estamos aquí para ayudarte. Si tienes alguna
+          pregunta, necesitas aclaración sobre nuestros productos y servicios, o
+          simplemente deseas hablar con uno de nuestros expertos en crédito, ¡no
+          dudes en contactarnos!
+        </p>
+        <Button
+          asChild
+          className="mt-8 rounded-full bg-[#ffab2f] px-10 py-6 text-base font-bold text-white hover:bg-[#f29a18]"
+        >
+          <a href={productWhatsAppUrl} target="_blank" rel="noreferrer">
+            Contáctanos
+          </a>
+        </Button>
       </div>
     </section>
   );

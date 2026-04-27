@@ -10,7 +10,6 @@ import {
   FileText,
   Film,
   GraduationCap,
-  HandCoins,
   Handshake,
   HeartHandshake,
   Landmark,
@@ -54,10 +53,12 @@ export type AboutItem = {
 export type ProductItem = {
   title: string;
   description: string;
+  headline?: string;
   rate: string;
   term: string;
   highlights: string[];
   requirements?: string[];
+  benefits?: string[];
   cta: string;
   icon: LucideIcon;
 };
@@ -378,118 +379,193 @@ export const productCategories: ProductCategory[] = [
   },
   {
     id: "creditos",
-    title: "Creditos",
+    title: "Créditos",
     description:
-      "Lineas para libre inversion, estudio, unificacion de cartera, viajes, vehiculo y microempresa, sujetas a analisis y politicas vigentes.",
+      "Líneas para libre inversión, estudio, unificación de cartera, viajes, vehículo y microempresa, sujetas a análisis y políticas vigentes.",
     items: [
       {
-        title: "Creditos",
-        description:
-          "Portafolio general de financiacion para libre inversion y necesidades puntuales del asociado.",
-        rate: "Tasas segun linea, estudio y tarifario vigente",
-        term: "Plazos segun destino, pagaduria y habito de pago",
-        highlights: [
-          "Atencion personalizada desde el analisis comercial.",
-          "Canales de pago digitales y presenciales.",
-          "Cobertura para necesidades personales y productivas.",
-        ],
-        cta: "Solicitar asesoria",
-        icon: HandCoins,
-      },
-      {
         title: "Crediaportes",
+        headline:
+          "Línea de crédito donde la garantía son los aportes del asociado",
         description:
-          "Linea de libre inversion cuya garantia principal son los aportes del asociado.",
-        rate: "Tasas preferenciales vigentes",
-        term: "Plazo maximo 48 meses",
+          "Línea de libre inversión cuya garantía principal son los aportes del asociado.",
+        rate: "Tasas preferenciales vigentes.",
+        term: "Plazo máximo 48 meses.",
         highlights: [
           "Cuota mensual fija.",
+          "Destino de libre inversión.",
           "Sin codeudor.",
-          "Proceso agil para asociados habilitados.",
+          "Plazo máximo 48 meses.",
+        ],
+        requirements: [
+          "Ser asociado.",
+          "Consulta de cédula.",
+          "Copia de cédula.",
+          "Último desprendible de pago.",
+        ],
+        benefits: [
+          "Premiamos la antigüedad de nuestros asociados.",
+          "No necesita codeudor.",
+          "Tasas preferenciales.",
+          "Crédito rápido.",
         ],
         cta: "Evaluar cupo",
         icon: BadgeDollarSign,
       },
       {
-        title: "Crediunion",
+        title: "Crediunión",
+        headline:
+          "Es un crédito en efectivo donde su destino será de libre inversión",
         description:
-          "Credito en efectivo para libre inversion, con cupo diferenciado por modalidad con o sin libranza.",
-        rate: "Tasa fija",
-        term: "Hasta 48 meses con libranza y hasta 36 meses sin libranza",
+          "Crédito en efectivo para libre inversión, con cupo diferenciado por modalidad con o sin libranza.",
+        rate: "Tasa fija.",
+        term: "Según modalidad de libranza u orden de descuento.",
         highlights: [
-          "Hasta 50 SMMLV con libranza.",
-          "Hasta 25 SMMLV sin libranza.",
-          "Analisis segun experiencia crediticia y pagaduria.",
+          "Para asociados nuevos.",
+          "Destino de libre inversión.",
+          "Con libranza u orden de descuento: hasta 50 S.M.M.L.V.",
+          "Sin libranza u orden de descuento: hasta 25 S.M.M.L.V.",
+        ],
+        requirements: [
+          "Copia de cédula al 150%.",
+          "Últimos 2 desprendibles de pago.",
+          "Certificación laboral.",
+          "Garantía conforme al reglamento.",
+        ],
+        benefits: [
+          "Tasa fija.",
+          "Facilidad de pago en canales digitales, oficinas o corresponsales Efecty y Super Giros.",
+          "Estudio de crédito rápido.",
         ],
         cta: "Revisar condiciones",
         icon: Building2,
       },
       {
         title: "Crediestudio",
+        headline:
+          "Crédito otorgado para continuar tus estudios con convenio exclusivo Universidad Simón Bolívar",
         description:
-          "Credito orientado a continuidad academica y matriculas, divulgado comercialmente con convenio universitario.",
-        rate: "Tasa publicada: 2%",
-        term: "Plazo maximo 36 meses",
+          "Crédito orientado a continuidad académica y matrículas, divulgado comercialmente con convenio universitario.",
+        rate: "Tasa publicada: 2%.",
+        term: "Plazo máximo 36 meses.",
         highlights: [
-          "Convenio exclusivo visible con la Universidad Simon Bolivar.",
-          "Apoyo para continuar estudios.",
-          "Requisitos sujetos al perfil del solicitante.",
+          "Tasa 2%.",
+          "Convenio Universidad Simón Bolívar.",
+          "Sin codeudor según condiciones del convenio.",
+          "Plazo máximo 36 meses.",
+        ],
+        requirements: [
+          "Fotocopia de cédula al 150%.",
+          "Liquidación de matrícula.",
+          "Tener codeudor cuando aplique.",
+          "Codeudor empleado: fotocopia de cédula al 150% y carta laboral.",
+          "Codeudor pensionado: fotocopia de cédula al 150% y 2 últimas tirillas de pago de la pensión.",
+        ],
+        benefits: [
+          "Acompañamiento para continuar tus estudios.",
+          "Condiciones preferenciales por convenio educativo.",
+          "Estudio de crédito rápido.",
         ],
         cta: "Solicitar apoyo academico",
         icon: BookOpenText,
       },
       {
         title: "Credicartera",
+        headline: "Unifica tus deudas y ven a Cajaunión",
         description:
-          "Producto para unificar obligaciones bajo una estructura mas ordenada para el asociado elegible.",
-        rate: "Tasas competitivas",
-        term: "Condiciones segun estudio de cartera",
+          "Producto para unificar obligaciones bajo una estructura más ordenada para el asociado elegible.",
+        rate: "Tasas competitivas.",
+        term: "Condiciones según estudio de cartera.",
         highlights: [
-          "Pensado para reorganizar deudas.",
-          "Dirigido a asociados con trayectoria y buen historial.",
-          "Pago por transferencia o corresponsales aliados.",
+          "Tener una antigüedad como asociado mayor a 10 años.",
+          "Tener buen historial crediticio.",
+          "Antigüedad laboral mayor a 1 año.",
+        ],
+        requirements: [
+          "Ser asociado.",
+          "Tener antigüedad mayor a 10 años.",
+          "Dirigido a empleados públicos, privados o pensionados.",
+        ],
+        benefits: [
+          "Facilidad para acceder al producto en oficinas de Caja Unión o con asesores comerciales.",
+          "Unificas tus deudas.",
+          "Tasas competitivas.",
+          "Facilidades de pago vía transferencia o corresponsales Efecty y Super Giros.",
         ],
         cta: "Unificar deudas",
         icon: ReceiptText,
       },
       {
         title: "Crediviajes",
+        headline:
+          "Créditos para giras técnicas y actividades vacacionales y recreativas de los asociados y su grupo familiar",
         description:
-          "Financiacion para giras tecnicas y actividades vacacionales o recreativas del asociado y su grupo familiar.",
-        rate: "Tasas segun linea de viaje y estudio",
-        term: "Plazo hasta 24 meses",
+          "Financiación para giras técnicas y actividades vacacionales o recreativas del asociado y su grupo familiar.",
+        rate: "Tasas según línea de viaje y estudio.",
+        term: "Plazo hasta 24 meses.",
         highlights: [
-          "Pago directo a la agencia de viajes.",
-          "Cuotas fijas con opcion de prepago.",
-          "Aplica a planes vacacionales y recreativos.",
+          "Crédito para giras técnicas y actividades vacacionales y recreativas.",
+          "Dirigido a asociados y su grupo familiar.",
+          "Plazo hasta de 24 meses.",
+        ],
+        requirements: [
+          "Certificación de la gira o plan turístico.",
+          "Se hará el pago a la agencia de viajes.",
+          "Plazo a 24 meses.",
+        ],
+        benefits: [
+          "Destinado al entretenimiento del asociado y sus familiares.",
+          "Convenios de descuento con agencias de turismo.",
+          "Cuotas fijas.",
+          "Descuentos por libranza.",
         ],
         cta: "Planear viaje",
         icon: MapPinned,
       },
       {
         title: "Credivehiculo",
+        headline: "Crédito otorgado para adquirir su vehículo",
         description:
-          "Producto para adquirir vehiculo con distintos esquemas de financiacion y acompanamiento comercial.",
-        rate: "Tasas segun estudio y plan de financiacion",
-        term: "Diferentes planes de financiacion",
+          "Producto para adquirir vehículo con distintos esquemas de financiación y acompañamiento comercial.",
+        rate: "Tasas según estudio y plan de financiación.",
+        term: "Diferentes planes de financiación.",
         highlights: [
-          "Aplica para compra de vehiculo.",
-          "Pago por Banco de Bogota, Super Giros o PSE.",
-          "Atencion desde oficinas o asesoria comercial.",
+          "Diferentes planes de financiación.",
+        ],
+        benefits: [
+          "Facilidad para acceder a los productos en oficinas de Caja Unión o con asesores comerciales.",
+          "Medios de pago vía transferencia Banco de Bogotá, Super Giros o PSE.",
         ],
         cta: "Cotizar credito",
         icon: CarFront,
       },
       {
-        title: "Microcredito",
+        title: "Microcrédito",
+        headline:
+          "Crédito para capital de trabajo, cancelación de pasivos y compra de activos fijos",
         description:
-          "Credito para capital de trabajo, compra de activos fijos o cancelacion de pasivos para microempresarios.",
-        rate: "Tasas segun monto, actividad y estudio",
-        term: "Condiciones segun evaluacion del negocio",
+          "Crédito para capital de trabajo, compra de activos fijos o cancelación de pasivos para microempresarios.",
+        rate: "Tasas según monto, actividad y estudio.",
+        term: "Condiciones según evaluación del negocio.",
         highlights: [
-          "Para actividades formales e informales.",
-          "Requiere antiguedad minima de 12 meses en la actividad.",
-          "Menos papeleo y acompanamiento cercano.",
+          "Crédito para microempresarios formales e informales.",
+          "Crédito para capital de trabajo.",
+          "Cancelación de pasivos.",
+          "Compra de activos fijos.",
+        ],
+        requirements: [
+          "Cédula al 150%.",
+          "Actividad formal e informal.",
+          "Antigüedad de 12 meses.",
+          "Recibos públicos al día.",
+          "Aplica términos y condiciones según el monto solicitado.",
+        ],
+        benefits: [
+          "Atención personalizada.",
+          "Inclusión financiera.",
+          "Menos papeleo.",
+          "Agilidad en el trámite.",
+          "Acceso a todos los convenios.",
         ],
         cta: "Fortalecer negocio",
         icon: BriefcaseBusiness,
