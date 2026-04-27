@@ -1,14 +1,14 @@
 import type { PageIntroData } from "../components/PageIntro";
 
 const homeCrumb = { label: "Inicio", href: "/" };
-const aboutCrumb = { label: "Acerca de", href: "/acerca-de" };
+const aboutCrumb = { label: "Nosotros", href: "/nosotros" };
 const productsCrumb = { label: "Productos", href: "/productos" };
 const benefitsCrumb = { label: "Beneficios", href: "/beneficios" };
 
 export const pageIntros = {
   about: {
-    title: "Acerca de",
-    breadcrumbs: [homeCrumb, { label: "Acerca de" }],
+    title: "Nosotros",
+    breadcrumbs: [homeCrumb, { label: "Nosotros" }],
     headline: "Conoce quiénes somos y cómo trabajamos por nuestros asociados",
   },
   products: {
@@ -66,7 +66,7 @@ export const pageIntros = {
 const aboutPageIntros: Record<string, PageIntroData> = {
   nosotros: {
     title: "Nosotros",
-    breadcrumbs: [homeCrumb, aboutCrumb, { label: "Nosotros" }],
+    breadcrumbs: [homeCrumb, { label: "Nosotros" }],
     headline: "Una cooperativa cercana para crecer con confianza",
   },
   asambleas: {

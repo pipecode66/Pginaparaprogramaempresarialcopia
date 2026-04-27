@@ -118,11 +118,11 @@ export const navItems: NavItem[] = [
   { label: "Inicio", href: "/" },
   {
     label: "Acerca de",
-    href: "/acerca-de",
+    href: "/nosotros",
     children: [
       {
         label: "Nosotros",
-        href: "/acerca-de/nosotros",
+        href: "/nosotros",
         description: "Panorama institucional y enfoque cooperativo.",
       },
     ],

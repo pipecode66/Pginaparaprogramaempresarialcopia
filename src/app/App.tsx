@@ -57,16 +57,6 @@ function SectionPage({ children, intro }: SectionPageProps) {
   );
 }
 
-function AboutPage() {
-  const { itemId } = useParams();
-
-  return (
-    <SectionPage intro={getAboutPageIntro(itemId)}>
-      <AboutSection itemId={itemId} />
-    </SectionPage>
-  );
-}
-
 function AboutAliasPage({ itemId }: { itemId: string }) {
   return (
     <SectionPage intro={getAboutPageIntro(itemId)}>
@@ -110,15 +100,6 @@ function AppShell() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route
-            path="/acerca-de"
-            element={
-              <SectionPage intro={pageIntros.about}>
-                <AboutSection />
-              </SectionPage>
-            }
-          />
-          <Route path="/acerca-de/:itemId" element={<AboutPage />} />
           <Route
             path="/nosotros"
             element={<AboutAliasPage itemId="nosotros" />}

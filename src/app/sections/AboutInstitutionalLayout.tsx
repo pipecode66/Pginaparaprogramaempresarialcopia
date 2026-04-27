@@ -8,24 +8,24 @@ export const aboutItemAliases: Record<string, string> = {
 };
 
 const aboutNavigationItems = [
-  { id: "nosotros", href: "/acerca-de/nosotros", label: "Nosotros" },
+  { id: "nosotros", href: "/nosotros", label: "Nosotros" },
   {
     id: "vision-mision",
-    href: "/acerca-de/vision-y-mision",
+    href: "/vision-y-mision",
     label: "Visión y Misión",
   },
   {
     id: "propuesta-negocio",
-    href: "/acerca-de/propuesta-de-negocio",
+    href: "/propuesta-de-negocio",
     label: "Propuesta de negocio",
   },
-  { id: "asambleas", href: "/acerca-de/asambleas", label: "Asambleas" },
+  { id: "asambleas", href: "/asambleas", label: "Asambleas" },
   {
     id: "politicas",
-    href: "/acerca-de/politicas-estatutos-y-codigos",
+    href: "/politicas-estatutos-y-codigos",
     label: "Políticas, Estatutos y Códigos",
   },
-  { id: "rte", href: "/acerca-de/rte", label: "RTE" },
+  { id: "rte", href: "/rte", label: "RTE" },
 ];
 
 export function getCanonicalAboutItemId(itemId?: string) {
@@ -49,7 +49,7 @@ export function AboutInstitutionalLayout({
 
   return (
     <section
-      id={canonicalActiveItemId ?? "acerca-de"}
+      id={canonicalActiveItemId ?? "institucional"}
       className="scroll-mt-24 bg-muted/45 py-16 md:py-20"
     >
       <div className="container mx-auto px-4">
