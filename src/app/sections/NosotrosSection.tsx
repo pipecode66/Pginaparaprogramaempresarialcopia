@@ -2,7 +2,6 @@ import {
   BadgeCheck,
   BriefcaseBusiness,
   FileCheck2,
-  FileText,
   HeartHandshake,
   Lightbulb,
   Mail,
@@ -13,6 +12,7 @@ import {
 } from "lucide-react";
 import { BrandLogo } from "../components/BrandLogo";
 import { AsambleasContent } from "./AsambleasSection";
+import { PoliticasContent } from "./PoliticasSection";
 
 const internalNavItems = [
   { href: "#nosotros-presentacion", label: "Nosotros" },
@@ -77,15 +77,6 @@ const proposalPoints = [
     label: "8.",
     text: "Usamos múltiples canales para conectar, como atención presencial, correo electrónico, redes sociales y eventos.",
   },
-];
-
-const policyDocuments = [
-  "Políticas de seguridad TIC",
-  "Política de tratamiento de datos personales",
-  "Política de crédito",
-  "Estatuto",
-  "Código de ética y conducta",
-  "Código de buen gobierno",
 ];
 
 const supportCards = [
@@ -279,41 +270,8 @@ export function NosotrosSection() {
               </div>
             </section>
 
-            <section
-              id="politicas"
-              className="relative scroll-mt-28 overflow-hidden rounded-lg border border-border bg-background p-6 text-center shadow-sm md:p-10"
-            >
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-1/2 size-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/5"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-1/2 size-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/5"
-              />
-
-              <div className="relative">
-                <FileText aria-hidden="true" className="mx-auto size-11 text-primary" />
-                <h2 className="mx-auto mt-5 max-w-4xl font-display text-3xl font-bold leading-tight text-primary md:text-4xl">
-                  La cooperativa de ahorro y crédito Caja Unión
-                </h2>
-                <p className="mx-auto mt-5 max-w-4xl text-base leading-7 text-muted-foreground">
-                  Reconoce que los sistemas y la información de TIC son activos
-                  valiosos que son esenciales para apoyar los objetivos estratégicos
-                  de la entidad.
-                </p>
-
-                <div className="mx-auto mt-9 flex max-w-2xl flex-col items-center gap-5">
-                  {policyDocuments.map((document) => (
-                    <span
-                      key={document}
-                      className="inline-flex min-h-10 w-full max-w-[480px] items-center justify-center rounded-full bg-accent px-6 py-2 text-center text-sm font-bold uppercase text-accent-foreground shadow-[0_10px_24px_rgba(255,170,43,0.24)]"
-                    >
-                      {document}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <section id="politicas" className="scroll-mt-28">
+              <PoliticasContent />
             </section>
 
             <section id="asambleas" className="scroll-mt-28">
