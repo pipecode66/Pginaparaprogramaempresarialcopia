@@ -143,14 +143,38 @@ export function ProductsSection({
                               </div>
                             </div>
 
-                            <ul className="space-y-2">
-                              {product.highlights.map((highlight) => (
-                                <li key={highlight} className="flex items-start gap-2">
-                                  <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                                  <span>{highlight}</span>
-                                </li>
-                              ))}
-                            </ul>
+                            <div className="space-y-3">
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                Características
+                              </p>
+                              <ul className="space-y-2">
+                                {product.highlights.map((highlight) => (
+                                  <li key={highlight} className="flex items-start gap-2">
+                                    <Check className="mt-0.5 size-4 shrink-0 text-primary" />
+                                    <span>{highlight}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            {product.requirements?.length ? (
+                              <div className="space-y-3 rounded-2xl bg-primary/5 p-4">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                                  Requisitos
+                                </p>
+                                <ul className="space-y-2">
+                                  {product.requirements.map((requirement) => (
+                                    <li
+                                      key={requirement}
+                                      className="flex items-start gap-2"
+                                    >
+                                      <Check className="mt-0.5 size-4 shrink-0 text-accent" />
+                                      <span>{requirement}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ) : null}
 
                             <Button
                               asChild

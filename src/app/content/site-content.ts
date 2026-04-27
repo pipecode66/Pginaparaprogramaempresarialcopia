@@ -57,6 +57,7 @@ export type ProductItem = {
   rate: string;
   term: string;
   highlights: string[];
+  requirements?: string[];
   cta: string;
   icon: LucideIcon;
 };
@@ -262,78 +263,113 @@ export const aboutItems: AboutItem[] = [
 export const productCategories: ProductCategory[] = [
   {
     id: "ahorro-inversion",
-    title: "Ahorro e Inversion",
+    title: "Ahorro e Inversión",
     description:
-      "Productos para liquidez diaria, ahorro de metas y capitalizacion a termino, con informacion publica consolidada desde el portal institucional.",
+      "Opciones para ahorrar, invertir y programar tus metas con disponibilidad, rentabilidad y acompañamiento cooperativo.",
     items: [
       {
         title: "CDAT",
         description:
-          "Certificado de ahorro a termino para invertir un monto definido y recibir capital mas intereses al vencimiento.",
-        rate:
-          "Referencia publica visible: 10.00% a 14.00%; con credito mayor a $5.000.000: 10.50% a 14.50%",
-        term: "Plazos publicados: 90, 180 y 360 dias",
+          "Invierte tu dinero de forma rentable y segura con tasas competitivas. Es un Certificado de Depósito de Ahorro a Término que permite invertir por un plazo determinado y recibir al vencimiento el monto invertido más los intereses generados.",
+        rate: "Tasas competitivas y preferenciales previamente acordadas.",
+        term: "De 90 a 360 días, con opciones de 6, 9 y 12 meses.",
         highlights: [
-          "Tasa previamente acordada al momento de la apertura.",
-          "Pensado para metas de corto y mediano plazo.",
-          "Confirmar tarifa vigente antes de contratar.",
+          "Inversión por un plazo determinado.",
+          "Monto mínimo de constitución: $200.000.",
+          "Devolución al vencimiento del monto invertido más los intereses generados.",
+          "Tasas preferenciales.",
         ],
-        cta: "Solicitar simulacion",
+        requirements: [
+          "Documento de identificación original y fotocopia de la cédula ampliada al 150%.",
+          "Monto mínimo de $200.000.",
+          "Constancia de ingresos.",
+          "Ser afiliado.",
+        ],
+        cta: "Solicitar CDAT",
         icon: Landmark,
       },
       {
-        title: "Ahorro Union",
+        title: "Ahorro Unión",
         description:
-          "Cuenta de ahorro con disponibilidad inmediata, rentabilidad mensual y opcion de descuento por nomina.",
-        rate: "Intereses diarios sobre saldo promedio, segun tarifario vigente",
-        term: "Disponibilidad inmediata del dinero",
+          "¡Ahorrar te ayuda a cumplir tus sueños! Cuenta de ahorros con disponibilidad inmediata, rentabilidad mensual y posibilidad de descontar por nómina el valor que quieras ahorrar.",
+        rate:
+          "Rentabilidad mensual con generación de intereses diarios sobre el saldo promedio.",
+        term: "Disponibilidad inmediata del dinero.",
         highlights: [
-          "Manejo por libreta de ahorros o tarjeta debito.",
-          "Liquidez permanente para el asociado.",
-          "Cobertura de seguro de depositos FOGACOOP.",
+          "Apertura mínima: $20.000.",
+          "Manejo por libreta de ahorros o tarjeta débito.",
+          "Saldo mínimo en la cuenta: $20.000.",
+          "Libreta de ahorro sin cuota de manejo.",
+          "Tarjeta débito disponible según condiciones vigentes.",
         ],
-        cta: "Abrir cuenta",
+        requirements: [
+          "Copia de la cédula al 150%.",
+          "Formulario de solicitud debidamente diligenciado.",
+          "Monto de apertura: $27.000.",
+          "Estar afiliado.",
+        ],
+        cta: "Abrir Ahorro Unión",
         icon: PiggyBank,
       },
       {
         title: "Chiquicuenta",
         description:
-          "Cuenta para ninos y ninas que promueve cultura de ahorro desde edades tempranas.",
-        rate: "Intereses diarios sobre saldo promedio",
-        term: "Ahorro flexible con consignaciones periodicas",
+          "Forma grandes ahorradores. Enséñale a los más chiquitos de la casa el hábito de ahorrar para alcanzar cada uno de sus sueños.",
+        rate:
+          "Sin cuota mensual cuando el niño está afiliado con un representante asociado a Caja Unión.",
+        term: "Para niños de 0 a 11 años.",
         highlights: [
-          "Dirigida a ninos de 0 a 11 anos.",
-          "Manejo a traves de libreta de ahorros.",
-          "Apertura publicada desde $27.000.",
+          "Cuentas conjuntas y/o individuales de fácil manejo para los asociados.",
+          "Cuenta creada para niños de cero (0) a once (11) años.",
+          "Manejo a través de libreta de ahorros.",
+          "Apertura desde $27.000.",
         ],
-        cta: "Conocer requisitos",
+        requirements: [
+          "Si el niño abre la cuenta, debe cancelar $29.000 de afiliación.",
+          "Si el padre o acudiente abre la cuenta, debe cancelar $27.000 de afiliación.",
+          "Copia del documento del acudiente ampliado al 150%.",
+          "Copia de tarjeta de identidad o registro civil.",
+        ],
+        cta: "Abrir Chiquicuenta",
         icon: Sparkles,
       },
       {
-        title: "Cuenta de ahorros UnionJoven",
+        title: "Ahorro Unijoven",
         description:
-          "Producto orientado a quienes inician su historial de ahorro con una cuenta flexible y acompanamiento financiero.",
-        rate: "Tasa de ahorro segun tarifario vigente",
-        term: "Cuenta a la vista con manejo flexible",
+          "Que los sueños sigan siendo su motivación al crecer. Cuenta de ahorro para jóvenes de 12 a 18 años.",
+        rate: "Ahorro con disponibilidad mediante libreta de ahorros.",
+        term: "Para jóvenes de 12 a 18 años.",
         highlights: [
-          "Apertura con bajos montos.",
-          "Proteccion de ahorros con FOGACOOP.",
-          "Ideal para consolidar habitos financieros tempranos.",
+          "Orientada a adolescentes a partir de los 12 años.",
+          "Ahorro y disponibilidad del dinero mediante la libreta de ahorros.",
+          "Diseñada para acompañar el crecimiento de sus metas.",
         ],
-        cta: "Hablar con un asesor",
+        requirements: [
+          "Si se afilia, el padre debe cancelar $27.000.",
+          "Cancelar $5.000 de la tarjeta.",
+          "Cancelar $29.000.",
+          "Copia de registro civil.",
+        ],
+        cta: "Abrir Ahorro Unijoven",
         icon: GraduationCap,
       },
       {
-        title: "Linea de ahorro programado",
+        title: "Línea de Ahorro Programado",
         description:
-          "Ahorro pactado por cuotas periodicas para metas puntuales como vivienda, educacion, vacaciones o temporada navidena.",
+          "A un solo clic de alcanzar tus sueños. Ahorro que el afiliado realiza a través de cuotas periódicas, pactadas de acuerdo con una programación contractualmente definida entre el ahorrador y Caja Unión. Los intereses se liquidan en el último mes sobre el saldo promedio del mes, y el retiro se puede realizar al vencimiento del tiempo acordado, incluyendo capital e intereses.",
         rate:
-          "Intereses liquidados en el ultimo mes sobre el saldo promedio del mes",
-        term: "Plazo pactado con la cooperativa",
+          "Intereses liquidados en el último mes sobre el saldo promedio del mes.",
+        term: "Plazos de 6, 9, 12, 18, 25 o 36 meses.",
         highlights: [
-          "Modalidades: navideno, vivienda, vacacional y educativo.",
-          "Pago por descuento de nomina o consignacion.",
-          "Retiro al vencimiento del tiempo acordado.",
+          "Dinámico y flexible.",
+          "Monto mínimo para la constitución de un PAC: $25.000.",
+          "Cuotas periódicas pactadas según programación contractual.",
+          "Retiro al vencimiento del tiempo acordado, incluyendo capital e intereses.",
+        ],
+        requirements: [
+          "Copia de la cédula al 150%.",
+          "Monto de apertura: $27.000.",
+          "Ahorrar mínimo 3 meses.",
         ],
         cta: "Programar ahorro",
         icon: WalletCards,
