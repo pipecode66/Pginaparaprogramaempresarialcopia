@@ -248,10 +248,10 @@ const convenioDirectoryItems: ConvenioDirectoryItem[] = [
     tone: "#1d4ed8",
   },
   {
-    title: "Restaurante Aliado",
+    title: "La Llanerada",
     category: "Gastronomía",
     cover: "food",
-    logoLines: ["Restaurante", "Aliado"],
+    logoLines: ["La", "Llanerada"],
     logoSubline: "Autenticidad y calidad",
     tone: "#92400e",
   },
@@ -304,6 +304,30 @@ const convenioDirectoryItems: ConvenioDirectoryItem[] = [
     tone: "#1e3a8a",
   },
 ];
+
+const convenioLogoSources: Record<string, string> = {
+  "Active English Institute": "/convenios/logos/logoactiveenglish.png",
+  "AME Asistencia Médica": "/convenios/logos/logoame.png",
+  "CDA Avanzar": "/convenios/logos/logocdaavanzar.png",
+  "Centro Visual Dr Marcelo Rubiano": "/convenios/logos/logocentrovisual.png",
+  "Dali Odontología Spa": "/convenios/logos/logodaliodontologiaspa.png",
+  "Elaser Radiólogos": "/convenios/logos/logoelaser.png",
+  FESC: "/convenios/logos/logofesc.png",
+  FINEF: "/convenios/logos/logofinef.png",
+  "Fomatours Travel": "/convenios/logos/logofomatours.png",
+  "Fundación Virgilio Barco": "/convenios/logos/logovirgiliobarco.png",
+  "La Llanerada": "/convenios/logos/logolallanerada.png",
+  "Liga Colombiana Contra el Cáncer": "/convenios/logos/logoligaccc.png",
+  "Mundo Cross Suzuki": "/convenios/logos/logosuzuki.png",
+  "ODONTO Cúcuta": "/convenios/logos/logoodontocucuta.png",
+  Odontoworld: "/convenios/logos/logoodontoworld.png",
+  "Óptica Científica": "/convenios/logos/logoopticacientifica.png",
+  "Óptica Visual": "/convenios/logos/logoopticavisual.png",
+  "Royal Films": "/convenios/logos/logoroyalfilms.png",
+  Tramicar: "/convenios/logos/logotramicar.png",
+  Uniremington: "/convenios/logos/logouniremington.png",
+  Uronorte: "/convenios/logos/logouronorte.png",
+};
 
 function ReservedCover({ title }: { title: string }) {
   return (
@@ -371,61 +395,43 @@ export function ConveniosSection() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Este directorio reune los convenios disponibles para asociados. Los
-            primeros cuatro espacios quedan reservados para las imágenes reales que
-            se integrarán cuando sean entregadas.
+            logos oficiales se integran en cada tarjeta, manteniendo las portadas
+            como espacios visuales de apoyo.
           </p>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {convenioDirectoryItems.map((item) => (
-            <article
-              key={item.title}
-              className="overflow-hidden rounded-lg border border-border/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div className="aspect-[4/3] border-b border-border/70">
-                {item.reservedCover || !item.cover ? (
-                  <ReservedCover title={item.title} />
-                ) : (
-                  <GeneratedCover cover={item.cover} title={item.title} />
-                )}
-              </div>
+          {convenioDirectoryItems.map((item) => {
+            const logoSrc = convenioLogoSources[item.title];
 
-              <div className="flex min-h-[168px] items-center justify-center bg-white p-6 text-center">
-                <div>
-                  {item.mark ? (
-                    <span
-                      aria-hidden="true"
-                      className="mx-auto mb-3 flex size-9 items-center justify-center rounded-full text-2xl font-black"
-                      style={{ color: item.tone }}
-                    >
-                      {item.mark}
-                    </span>
-                  ) : null}
-
-                  <div
-                    className="font-display text-3xl font-black uppercase leading-[0.95] tracking-normal"
-                    style={{ color: item.tone }}
-                  >
-                    {item.logoLines.map((line) => (
-                      <span key={line} className="block">
-                        {line}
-                      </span>
-                    ))}
-                  </div>
-
-                  {item.logoSubline ? (
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                      {item.logoSubline}
-                    </p>
-                  ) : null}
-
-                  <p className="mt-4 text-xs font-bold uppercase tracking-[0.16em] text-primary/80">
-                    {item.category}
-                  </p>
+            return (
+              <article
+                key={item.title}
+                className="overflow-hidden rounded-lg border border-border/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="aspect-[4/3] border-b border-border/70">
+                  {item.reservedCover || !item.cover ? (
+                    <ReservedCover title={item.title} />
+                  ) : (
+                    <GeneratedCover cover={item.cover} title={item.title} />
+                  )}
                 </div>
-              </div>
-            </article>
-          ))}
+
+                <div className="flex min-h-[168px] items-center justify-center bg-white p-6 text-center">
+                  {logoSrc ? (
+                    <img
+                      src={logoSrc}
+                      alt={`Logo de ${item.title}`}
+                      className="mx-auto max-h-24 max-w-[210px] object-contain"
+                      loading="lazy"
+                    />
+                  ) : null}
+
+                  <p className="sr-only">{item.category}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

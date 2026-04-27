@@ -250,10 +250,6 @@ export function RteContent() {
           </div>
         </RteSectionBlock>
 
-        <RteSectionBlock title="3. Aplicación de excedentes periodo fiscal 2024">
-          <p className="text-primary">→</p>
-        </RteSectionBlock>
-
         <RteSectionBlock title="4. Monto y destino de asignación permanentes">
           <RteTable
             columns={[
