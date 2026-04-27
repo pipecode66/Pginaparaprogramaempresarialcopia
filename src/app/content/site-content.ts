@@ -121,29 +121,9 @@ export const navItems: NavItem[] = [
     href: "/acerca-de",
     children: [
       {
-        label: "Vista general",
-        href: "/acerca-de",
-        description: "Resumen institucional de Caja Union.",
-      },
-      {
         label: "Nosotros",
         href: "/acerca-de/nosotros",
         description: "Panorama institucional y enfoque cooperativo.",
-      },
-      {
-        label: "Asambleas",
-        href: "/acerca-de/asambleas",
-        description: "Delegados, reglamentos e historial institucional.",
-      },
-      {
-        label: "Politicas, Estatutos y Codigos",
-        href: "/acerca-de/politicas",
-        description: "Marco documental y buen gobierno.",
-      },
-      {
-        label: "RTE",
-        href: "/acerca-de/rte",
-        description: "Regimen Tributario Especial y soporte publico.",
       },
     ],
   },
