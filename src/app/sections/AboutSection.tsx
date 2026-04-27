@@ -6,6 +6,7 @@ import {
 import { AsambleasSection } from "./AsambleasSection";
 import { NosotrosSection } from "./NosotrosSection";
 import { PoliticasSection } from "./PoliticasSection";
+import { RteSection } from "./RteSection";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -29,6 +30,10 @@ export function AboutSection({ itemId }: AboutSectionProps) {
 
   if (itemId === "politicas") {
     return <PoliticasSection />;
+  }
+
+  if (itemId === "rte") {
+    return <RteSection />;
   }
 
   const selectedItem = itemId

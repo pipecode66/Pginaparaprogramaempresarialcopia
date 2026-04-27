@@ -1,7 +1,6 @@
 import {
   BadgeCheck,
   BriefcaseBusiness,
-  FileCheck2,
   HeartHandshake,
   Lightbulb,
   Mail,
@@ -13,6 +12,7 @@ import {
 import { BrandLogo } from "../components/BrandLogo";
 import { AsambleasContent } from "./AsambleasSection";
 import { PoliticasContent } from "./PoliticasSection";
+import { RteContent } from "./RteSection";
 
 const internalNavItems = [
   { href: "#nosotros-presentacion", label: "Nosotros" },
@@ -76,15 +76,6 @@ const proposalPoints = [
     icon: MessageCircle,
     label: "8.",
     text: "Usamos múltiples canales para conectar, como atención presencial, correo electrónico, redes sociales y eventos.",
-  },
-];
-
-const supportCards = [
-  {
-    id: "rte",
-    icon: FileCheck2,
-    title: "RTE",
-    text: "Mantenemos visible la información legal, fiscal y documental vinculada al Régimen Tributario Especial.",
   },
 ];
 
@@ -270,36 +261,16 @@ export function NosotrosSection() {
               </div>
             </section>
 
-            <section id="politicas" className="scroll-mt-28">
-              <PoliticasContent />
-            </section>
-
             <section id="asambleas" className="scroll-mt-28">
               <AsambleasContent />
             </section>
 
-            <section className="grid scroll-mt-28 gap-5 md:grid-cols-2">
-              {supportCards.map((card) => {
-                const Icon = card.icon;
+            <section id="politicas" className="scroll-mt-28">
+              <PoliticasContent />
+            </section>
 
-                return (
-                  <article
-                    id={card.id}
-                    key={card.id}
-                    className="rounded-lg border border-border bg-background p-6 shadow-sm"
-                  >
-                    <span className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Icon aria-hidden="true" className="size-6" />
-                    </span>
-                    <h3 className="mt-4 text-xl font-bold text-foreground">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                      {card.text}
-                    </p>
-                  </article>
-                );
-              })}
+            <section id="rte" className="scroll-mt-28">
+              <RteContent />
             </section>
 
             <section className="rounded-lg border border-accent/30 bg-accent/10 p-6">
