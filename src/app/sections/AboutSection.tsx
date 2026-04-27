@@ -3,6 +3,7 @@ import {
   aboutHighlights,
   aboutItems,
 } from "../content/site-content";
+import { NosotrosSection } from "./NosotrosSection";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -16,6 +17,10 @@ type AboutSectionProps = {
 };
 
 export function AboutSection({ itemId }: AboutSectionProps) {
+  if (itemId === "nosotros") {
+    return <NosotrosSection />;
+  }
+
   const selectedItem = itemId
     ? aboutItems.find((item) => item.id === itemId)
     : undefined;
