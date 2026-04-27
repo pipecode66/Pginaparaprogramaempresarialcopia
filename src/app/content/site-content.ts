@@ -132,34 +132,9 @@ export const navItems: NavItem[] = [
     href: "/productos",
     children: [
       {
-        label: "Todo el portafolio",
+        label: "Portafolio",
         href: "/productos",
         description: "Resumen completo de productos y accesos.",
-      },
-      {
-        label: "Ahorro e Inversion",
-        href: "/ahorro",
-        description: "CDAT, cuentas de ahorro y ahorro programado.",
-      },
-      {
-        label: "Creditos",
-        href: "/credito",
-        description: "Lineas para libre inversion, estudio, viajes y mas.",
-      },
-      {
-        label: "Seguros",
-        href: "/productos/seguros",
-        description: "Proteccion patrimonial y familiar.",
-      },
-      {
-        label: "Portal Transaccional",
-        href: "/productos/portal-transaccional",
-        description: "Acceso al portal y soporte de ingreso.",
-      },
-      {
-        label: "Medios de Pago",
-        href: "/productos/medios-pago",
-        description: "PSE, Banco de Bogota, Efecty y SuperGiros.",
       },
     ],
   },

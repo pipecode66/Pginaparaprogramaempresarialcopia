@@ -1,6 +1,6 @@
 import { ArrowUpRight, Check } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { productCategories, serviceAccessCards } from "../content/site-content";
 import { Button } from "../components/ui/button";
 import {
@@ -18,6 +18,8 @@ const categoryRoutes: Record<string, string> = {
   "ahorro-inversion": "/ahorro",
   creditos: "/credito",
 };
+const productWhatsAppUrl =
+  "https://api.whatsapp.com/send/?phone=573508173170&text&type=phone_number&app_absent=0";
 
 type ProductsSectionProps = {
   accessCardId?: string;
@@ -155,10 +157,14 @@ export function ProductsSection({
                               variant="ghost"
                               className="w-full justify-between border border-border/80 bg-muted/50 text-foreground hover:bg-accent hover:text-accent-foreground"
                             >
-                              <Link to="/contacto">
+                              <a
+                                href={productWhatsAppUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
                                 {product.cta}
                                 <ArrowUpRight className="size-4" />
-                              </Link>
+                              </a>
                             </Button>
                           </CardContent>
                         </Card>
