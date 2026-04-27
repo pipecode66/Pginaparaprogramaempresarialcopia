@@ -1,4 +1,4 @@
-import { CreditCard, ExternalLink, MonitorUp } from "lucide-react";
+import { CreditCard, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 
@@ -29,8 +29,12 @@ export function FloatingServiceAccess() {
             rel="noreferrer"
             className="flex min-h-36 flex-col items-center justify-center px-6 py-7 text-center transition-colors hover:bg-muted"
           >
-            <span className="inline-flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <MonitorUp className="size-7" />
+            <span className="inline-flex size-20 items-center justify-center rounded-full border border-border bg-white p-3 shadow-sm">
+              <img
+                src="/brand/logoceus.png"
+                alt=""
+                className="max-h-12 max-w-16 object-contain"
+              />
             </span>
             <span className="mt-4 text-xl font-semibold text-foreground">Ceus</span>
             <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary">

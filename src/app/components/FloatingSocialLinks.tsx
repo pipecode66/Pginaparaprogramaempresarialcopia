@@ -75,12 +75,13 @@ export function FloatingSocialLinks() {
           rel="noreferrer"
           title="Abrir CEUS"
           aria-label="Abrir CEUS en una nueva pestaña"
-          className="inline-flex size-14 items-center justify-center rounded-full border border-border bg-white text-center shadow-xl transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_14px_34px_rgba(7,20,13,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex size-14 items-center justify-center rounded-full border border-border bg-white p-2 text-center shadow-xl transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_14px_34px_rgba(7,20,13,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <span className="font-display text-lg font-black leading-none tracking-normal text-[#3b82f6]">
-            CE
-            <span className="text-[#8b5cf6]">US</span>
-          </span>
+          <img
+            src="/brand/logoceus.png"
+            alt=""
+            className="max-h-9 max-w-11 object-contain"
+          />
         </a>
       </div>
     </nav>
