@@ -6,7 +6,9 @@ import {
 import { AsambleasSection } from "./AsambleasSection";
 import { NosotrosSection } from "./NosotrosSection";
 import { PoliticasSection } from "./PoliticasSection";
+import { PropuestaNegocioSection } from "./PropuestaNegocioSection";
 import { RteSection } from "./RteSection";
+import { VisionMisionSection } from "./VisionMisionSection";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -19,25 +21,43 @@ type AboutSectionProps = {
   itemId?: string;
 };
 
+const aboutItemAliases: Record<string, string> = {
+  "politicas-estatutos-y-codigos": "politicas",
+  "propuesta-de-negocio": "propuesta-negocio",
+  "vision-y-mision": "vision-mision",
+};
+
 export function AboutSection({ itemId }: AboutSectionProps) {
-  if (itemId === "nosotros") {
+  const canonicalItemId = itemId
+    ? aboutItemAliases[itemId] ?? itemId
+    : undefined;
+
+  if (canonicalItemId === "nosotros") {
     return <NosotrosSection />;
   }
 
-  if (itemId === "asambleas") {
+  if (canonicalItemId === "vision-mision") {
+    return <VisionMisionSection />;
+  }
+
+  if (canonicalItemId === "propuesta-negocio") {
+    return <PropuestaNegocioSection />;
+  }
+
+  if (canonicalItemId === "asambleas") {
     return <AsambleasSection />;
   }
 
-  if (itemId === "politicas") {
+  if (canonicalItemId === "politicas") {
     return <PoliticasSection />;
   }
 
-  if (itemId === "rte") {
+  if (canonicalItemId === "rte") {
     return <RteSection />;
   }
 
-  const selectedItem = itemId
-    ? aboutItems.find((item) => item.id === itemId)
+  const selectedItem = canonicalItemId
+    ? aboutItems.find((item) => item.id === canonicalItemId)
     : undefined;
   const visibleItems = selectedItem ? [selectedItem] : aboutItems;
 

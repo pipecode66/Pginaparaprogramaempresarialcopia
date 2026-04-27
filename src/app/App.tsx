@@ -67,6 +67,14 @@ function AboutPage() {
   );
 }
 
+function AboutAliasPage({ itemId }: { itemId: string }) {
+  return (
+    <SectionPage intro={getAboutPageIntro(itemId)}>
+      <AboutSection itemId={itemId} />
+    </SectionPage>
+  );
+}
+
 function ProductsPage() {
   const { sectionId } = useParams();
   const isAccessSection =
@@ -111,6 +119,39 @@ function AppShell() {
             }
           />
           <Route path="/acerca-de/:itemId" element={<AboutPage />} />
+          <Route
+            path="/nosotros"
+            element={<AboutAliasPage itemId="nosotros" />}
+          />
+          <Route
+            path="/vision-y-mision"
+            element={<AboutAliasPage itemId="vision-y-mision" />}
+          />
+          <Route
+            path="/vision-mision"
+            element={<AboutAliasPage itemId="vision-mision" />}
+          />
+          <Route
+            path="/propuesta-de-negocio"
+            element={<AboutAliasPage itemId="propuesta-de-negocio" />}
+          />
+          <Route
+            path="/propuesta-negocio"
+            element={<AboutAliasPage itemId="propuesta-negocio" />}
+          />
+          <Route
+            path="/asambleas"
+            element={<AboutAliasPage itemId="asambleas" />}
+          />
+          <Route
+            path="/politicas"
+            element={<AboutAliasPage itemId="politicas" />}
+          />
+          <Route
+            path="/politicas-estatutos-y-codigos"
+            element={<AboutAliasPage itemId="politicas-estatutos-y-codigos" />}
+          />
+          <Route path="/rte" element={<AboutAliasPage itemId="rte" />} />
           <Route
             path="/productos"
             element={

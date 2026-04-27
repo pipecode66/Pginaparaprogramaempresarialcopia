@@ -96,6 +96,12 @@ const aboutPageIntros: Record<string, PageIntroData> = {
   },
 };
 
+const aboutPageIntroAliases: Record<string, string> = {
+  "politicas-estatutos-y-codigos": "politicas",
+  "propuesta-de-negocio": "propuesta-negocio",
+  "vision-y-mision": "vision-mision",
+};
+
 const productsPageIntros: Record<string, PageIntroData> = {
   "ahorro-inversion": pageIntros.savings,
   creditos: pageIntros.credit,
@@ -117,7 +123,9 @@ export function getAboutPageIntro(itemId?: string) {
     return pageIntros.about;
   }
 
-  return aboutPageIntros[itemId] ?? pageIntros.about;
+  const canonicalItemId = aboutPageIntroAliases[itemId] ?? itemId;
+
+  return aboutPageIntros[canonicalItemId] ?? pageIntros.about;
 }
 
 export function getProductsPageIntro(sectionId?: string) {
