@@ -329,6 +329,33 @@ const convenioLogoSources: Record<string, string> = {
   Uronorte: "/convenios/logos/logouronorte.png",
 };
 
+const convenioCoverSources: Record<string, string> = {
+  "Active English Institute": "/convenios/covers/active-english-institute.jpg",
+  "AME Asistencia Médica": "/convenios/covers/ame-asistencia-medica.jpg",
+  "CDA Avanzar": "/convenios/covers/cda-avanzar.jpg",
+  "Centro Visual Dr Marcelo Rubiano":
+    "/convenios/covers/centro-visual-dr-marcelo-rubiano.jpg",
+  "Dali Odontología Spa": "/convenios/covers/dali-odontologia-spa.jpg",
+  "Elaser Radiólogos": "/convenios/covers/elaser-radiologos.jpg",
+  FESC: "/convenios/covers/fesc.jpg",
+  FINEF: "/convenios/covers/finef.jpg",
+  "Fomatours Travel": "/convenios/covers/fomatours-travel.jpg",
+  "Fundación Virgilio Barco":
+    "/convenios/covers/fundacion-virgilio-barco.jpg",
+  "La Llanerada": "/convenios/covers/la-llanerada.jpg",
+  "Liga Colombiana Contra el Cáncer":
+    "/convenios/covers/liga-colombiana-contra-el-cancer.jpg",
+  "Mundo Cross Suzuki": "/convenios/covers/mundo-cross-suzuki.jpg",
+  "ODONTO Cúcuta": "/convenios/covers/odonto-cucuta.jpg",
+  Odontoworld: "/convenios/covers/odontoworld.jpg",
+  "Óptica Científica": "/convenios/covers/optica-cientifica.jpg",
+  "Óptica Visual": "/convenios/covers/optica-visual.jpg",
+  "Royal Films": "/convenios/covers/royal-films.jpg",
+  Tramicar: "/convenios/covers/tramicar.jpg",
+  Uniremington: "/convenios/covers/uniremington.jpg",
+  Uronorte: "/convenios/covers/uronorte.jpg",
+};
+
 function ReservedCover({ title }: { title: string }) {
   return (
     <div
@@ -395,14 +422,15 @@ export function ConveniosSection() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Este directorio reune los convenios disponibles para asociados. Los
-            logos oficiales se integran en cada tarjeta, manteniendo las portadas
-            como espacios visuales de apoyo.
+            logos oficiales y portadas generadas se integran en cada tarjeta para
+            identificar mejor cada aliado.
           </p>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {convenioDirectoryItems.map((item) => {
             const logoSrc = convenioLogoSources[item.title];
+            const coverSrc = convenioCoverSources[item.title];
 
             return (
               <article
@@ -410,7 +438,14 @@ export function ConveniosSection() {
                 className="overflow-hidden rounded-lg border border-border/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="aspect-[4/3] border-b border-border/70">
-                  {item.reservedCover || !item.cover ? (
+                  {coverSrc ? (
+                    <img
+                      src={coverSrc}
+                      alt={`Portada ilustrativa de ${item.title}`}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : item.reservedCover || !item.cover ? (
                     <ReservedCover title={item.title} />
                   ) : (
                     <GeneratedCover cover={item.cover} title={item.title} />
