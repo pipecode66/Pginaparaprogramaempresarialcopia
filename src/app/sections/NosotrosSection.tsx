@@ -1,6 +1,5 @@
 import {
   BadgeCheck,
-  BookOpenText,
   BriefcaseBusiness,
   ClipboardList,
   FileCheck2,
@@ -24,67 +23,77 @@ const internalNavItems = [
   { href: "#rte", label: "RTE" },
 ];
 
+const missionVisionItems = [
+  {
+    icon: HeartHandshake,
+    title: "Misión",
+    text: "Somos una cooperativa que contribuye al progreso de sus asociados y su familia, brindando servicios de ahorro y crédito con transparencia, cercanía y responsabilidad social, con un talento humano comprometido y tecnología adecuada.",
+  },
+  {
+    icon: Target,
+    title: "Visión",
+    text: "Ser al 2027 una cooperativa innovadora, que incrementa su base social y la fideliza a través de productos y servicios financieros de fácil acceso, con un capital humano comprometido.",
+  },
+];
+
 const proposalPoints = [
   {
     icon: HeartHandshake,
-    label: "01.",
+    label: "1.",
     text: "Actitud y calidad humana en el servicio.",
   },
   {
     icon: Target,
-    label: "02.",
+    label: "2.",
     text: "Asesoría efectiva acorde con sus necesidades y expectativas.",
   },
   {
     icon: BadgeCheck,
-    label: "03.",
+    label: "3.",
     text: "Aportar valor a nuestros asociados y ser fuente confiable de soluciones.",
   },
   {
     icon: ShieldCheck,
-    label: "04.",
+    label: "4.",
     text: "Seguridad, solidez y transparencia en el manejo de los recursos y la gestión organizacional.",
   },
   {
     icon: Lightbulb,
-    label: "05.",
-    text: "Creatividad para responder a las necesidades del asociado y encontrar nuevas maneras de ayudar.",
+    label: "5.",
+    text: "Listos para ser creativos según las necesidades del cliente, buscando maneras de ayudar.",
   },
   {
     icon: WalletCards,
-    label: "06.",
-    text: "Servicios financieros únicos, competitivos y conectados con el bienestar.",
+    label: "6.",
+    text: "Ofrecemos servicios financieros únicos y competitivos.",
   },
   {
     icon: BriefcaseBusiness,
-    label: "07.",
-    text: "Un portafolio atractivo que cubre necesidades reales de los asociados.",
+    label: "7.",
+    text: "Diseñamos un portafolio atractivo que cubre las necesidades de los asociados.",
   },
   {
     icon: MessageCircle,
-    label: "08.",
-    text: "Múltiples canales para conectar: atención presencial, correo electrónico, redes sociales y eventos.",
+    label: "8.",
+    text: "Usamos múltiples canales para conectar, como atención presencial, correo electrónico, redes sociales y eventos.",
   },
 ];
 
-const institutionalCards = [
-  {
-    id: "vision-mision",
-    icon: Target,
-    title: "Visión y Misión",
-    text: "Contribuimos al progreso del asociado y su familia con transparencia, cercanía y responsabilidad social, proyectando una cooperativa innovadora y de fácil acceso.",
-  },
+const policyDocuments = [
+  "Políticas de seguridad TIC",
+  "Política de tratamiento de datos personales",
+  "Política de crédito",
+  "Estatuto",
+  "Código de ética y conducta",
+  "Código de buen gobierno",
+];
+
+const supportCards = [
   {
     id: "asambleas",
     icon: ClipboardList,
     title: "Asambleas",
     text: "Organizamos informes, reglamentos, convocatorias y balance social para que la gestión institucional pueda consultarse con claridad.",
-  },
-  {
-    id: "politicas",
-    icon: FileText,
-    title: "Políticas, Estatutos y Códigos",
-    text: "Reunimos el marco documental de seguridad TIC, tratamiento de datos, estatuto, código de ética y buen gobierno.",
   },
   {
     id: "rte",
@@ -108,31 +117,30 @@ function PeopleVisualCard() {
   );
 }
 
-function FinanceVisualCard() {
+function MissionVisionVisual({
+  title,
+  index,
+}: {
+  index: number;
+  title: string;
+}) {
+  const Icon = index === 0 ? HeartHandshake : Target;
+
   return (
-    <div className="relative min-h-[520px] overflow-hidden rounded-lg bg-[#55c83a] shadow-[0_24px_60px_rgba(0,122,61,0.18)]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(255,255,255,0.2),transparent_30%),radial-gradient(circle_at_50%_48%,transparent_0,transparent_38%,rgba(255,255,255,0.12)_38%,rgba(255,255,255,0.12)_39%,transparent_40%),radial-gradient(circle_at_50%_48%,transparent_0,transparent_58%,rgba(255,255,255,0.1)_58%,rgba(255,255,255,0.1)_59%,transparent_60%)]" />
-      <div className="relative z-10 flex h-full min-h-[520px] flex-col items-center justify-center px-8 py-12 text-center text-white">
-        <BrandLogo className="w-56 brightness-0 invert" />
-        <div className="mt-12 flex size-36 items-center justify-center rounded-full border border-white/25 bg-white/15 shadow-2xl backdrop-blur">
-          <WalletCards aria-hidden="true" className="size-20" />
-        </div>
-        <h3 className="mt-10 font-display text-3xl font-bold leading-tight">
-          Valor cooperativo para cada etapa financiera
-        </h3>
-        <p className="mt-4 max-w-sm text-sm leading-6 text-white/90">
-          Ahorro, crédito, educación financiera y servicios sociales conectados en
-          una misma experiencia.
-        </p>
+    <div className="relative flex min-h-[180px] items-center justify-center overflow-hidden rounded-lg bg-primary/10">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.85),transparent_34%),radial-gradient(circle_at_75%_80%,rgba(255,170,43,0.22),transparent_32%)]"
+      />
+      <div className="relative flex size-24 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl">
+        <Icon aria-hidden="true" className="size-11" />
       </div>
+      <span className="sr-only">Visual de apoyo para {title}</span>
     </div>
   );
 }
 
 export function NosotrosSection() {
-  const leftPoints = proposalPoints.slice(0, 4);
-  const rightPoints = proposalPoints.slice(4);
-
   return (
     <section id="nosotros" className="scroll-mt-24 bg-muted/45 py-16 md:py-20">
       <div className="container mx-auto px-4">
@@ -157,7 +165,7 @@ export function NosotrosSection() {
             </nav>
           </aside>
 
-          <div className="space-y-14">
+          <div className="space-y-12">
             <section
               id="nosotros-presentacion"
               className="scroll-mt-28 rounded-lg border border-border bg-background p-6 shadow-sm md:p-8"
@@ -185,147 +193,137 @@ export function NosotrosSection() {
               </div>
             </section>
 
-            <section id="propuesta-negocio" className="scroll-mt-28">
-              <div className="text-center">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">
-                  Nuestra propuesta
-                </p>
-                <h2 className="font-display text-4xl font-bold text-primary md:text-5xl">
-                  Propuesta de negocio
-                </h2>
-                <p className="mx-auto mt-4 max-w-5xl text-xl font-bold leading-8 text-accent md:text-2xl">
-                  "Estrategias básicas de diferenciación para entregar una propuesta
-                  de negocio única en el mercado".
-                </p>
-              </div>
-
-              <div className="mt-8 rounded-lg border border-border bg-background p-6 text-base leading-8 text-muted-foreground shadow-sm md:p-8 md:text-lg">
-                <p>
-                  <strong className="text-foreground">CAJA UNIÓN</strong> será
-                  reconocida por ofrecer y cumplir un portafolio de productos y
-                  servicios financieros y sociales ajustados a las necesidades de
-                  sus asociados. Los factores diferenciales serán la respuesta
-                  oportuna, el costo y la calidad del servicio.
-                </p>
-                <p className="mt-6">
-                  Estos factores serán la oferta de valor específica de la
-                  Cooperativa y la razón por la cual sus asociados la prefieran. Los
-                  beneficios estarán ligados a la revalorización de sus aportes, la
-                  integración en redes de servicios financieros, educativos y de
-                  solidaridad, y la conformación de una red integral de servicios.
-                </p>
-              </div>
-
-              <div className="mt-10 grid gap-5 md:grid-cols-2">
-                {proposalPoints.map((point) => {
-                  const Icon = point.icon;
-
-                  return (
-                    <article
-                      key={point.label}
-                      className="rounded-lg border border-accent/25 bg-white p-5 shadow-sm"
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
-                          <Icon aria-hidden="true" className="size-6" />
-                        </span>
-                        <div>
-                          <p className="text-sm font-black text-accent">
-                            {point.label}
-                          </p>
-                          <p className="mt-1 text-lg font-bold leading-7 text-accent">
-                            {point.text}
-                          </p>
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            </section>
-
-            <section className="scroll-mt-28">
-              <div className="grid items-center gap-8 xl:grid-cols-[0.7fr_1.15fr_0.7fr]">
-                <div className="grid gap-5">
-                  {leftPoints.map((point) => {
-                    const Icon = point.icon;
-
-                    return (
-                      <article
-                        key={point.label}
-                        className="rounded-lg border border-border bg-background p-5 text-center shadow-sm"
-                      >
-                        <span className="mx-auto flex size-14 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                          <Icon aria-hidden="true" className="size-7" />
-                        </span>
-                        <p className="mt-4 text-base font-black leading-6 text-accent">
-                          {point.text}
-                        </p>
-                      </article>
-                    );
-                  })}
-                </div>
-
-                <FinanceVisualCard />
-
-                <div className="grid gap-5">
-                  {rightPoints.map((point) => {
-                    const Icon = point.icon;
-
-                    return (
-                      <article
-                        key={point.label}
-                        className="rounded-lg border border-border bg-background p-5 text-center shadow-sm"
-                      >
-                        <span className="mx-auto flex size-14 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                          <Icon aria-hidden="true" className="size-7" />
-                        </span>
-                        <p className="mt-4 text-base font-black leading-6 text-accent">
-                          {point.text}
-                        </p>
-                      </article>
-                    );
-                  })}
-                </div>
-              </div>
-            </section>
-
-            <section id="vision-mision" className="scroll-mt-28">
-              <div className="grid gap-5 md:grid-cols-2">
-                {institutionalCards.slice(0, 1).map((card) => {
-                  const Icon = card.icon;
-
-                  return (
-                    <article
-                      key={card.id}
-                      className="rounded-lg border border-primary/20 bg-primary p-6 text-primary-foreground shadow-lg"
-                    >
-                      <Icon aria-hidden="true" className="size-10 text-accent" />
-                      <h3 className="mt-4 text-2xl font-bold text-white">
-                        {card.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-white/85 md:text-base">
-                        {card.text}
+            <section
+              id="vision-mision"
+              className="scroll-mt-28 rounded-lg border border-border bg-background p-6 shadow-sm md:p-8"
+            >
+              <div className="grid gap-8">
+                {missionVisionItems.map((item, index) => (
+                  <article
+                    key={item.title}
+                    className="grid items-center gap-6 md:grid-cols-[280px_1fr]"
+                  >
+                    <MissionVisionVisual index={index} title={item.title} />
+                    <div>
+                      <h2 className="font-display text-3xl font-bold text-primary md:text-4xl">
+                        {item.title}
+                      </h2>
+                      <p className="mt-4 text-base leading-8 text-muted-foreground md:text-lg">
+                        {item.text}
                       </p>
-                    </article>
-                  );
-                })}
-
-                <article className="rounded-lg border border-border bg-background p-6 shadow-sm">
-                  <BookOpenText aria-hidden="true" className="size-10 text-primary" />
-                  <h3 className="mt-4 text-2xl font-bold text-foreground">
-                    Educación y acompañamiento
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-                    Promovemos hábitos financieros responsables y orientación clara
-                    para que cada asociado pueda tomar mejores decisiones.
-                  </p>
-                </article>
+                    </div>
+                  </article>
+                ))}
               </div>
             </section>
 
-            <section className="grid scroll-mt-28 gap-5 md:grid-cols-3">
-              {institutionalCards.slice(1).map((card) => {
+            <section
+              id="propuesta-negocio"
+              className="scroll-mt-28 rounded-lg border border-border bg-background p-6 shadow-sm md:p-8"
+            >
+              <div className="relative overflow-hidden">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-1/2 top-20 size-[28rem] -translate-x-1/2 rounded-full border border-primary/5"
+                />
+                <div className="relative">
+                  <h2 className="font-display text-4xl font-bold text-primary md:text-5xl">
+                    Propuesta de negocio
+                  </h2>
+                  <p className="mt-4 max-w-5xl text-xl font-bold leading-7 text-[#53c83a] md:text-2xl">
+                    "Estrategias básicas de diferenciación para entregar una
+                    propuesta de negocio única en el mercado".
+                  </p>
+
+                  <div className="mt-7 space-y-6 text-base leading-8 text-foreground/85 md:text-lg">
+                    <p>
+                      <strong className="font-bold text-foreground">CAJA UNIÓN</strong>{" "}
+                      será reconocida por ofrecer y cumplir un portafolio de
+                      productos y servicios financieros y sociales ajustados a las
+                      necesidades de sus asociados. Los factores diferenciales de
+                      los servicios y productos que ofrecerá la cooperativa serán la
+                      respuesta oportuna, el costo y la calidad del servicio.
+                    </p>
+                    <p>
+                      Estos factores diferenciales serán la oferta de valor
+                      específica de la Cooperativa, la razón por la cual sus
+                      asociados la prefieran sobre las demás. Serán la base de los
+                      beneficios que recibirán los asociados, no solamente la
+                      revalorización de sus aportes, sino también la integración en
+                      redes de los servicios financieros, educativos y de
+                      solidaridad, creando una cadena de valor agregado. Los
+                      beneficios que obtendrán los asociados están ligados con la
+                      mayor capacidad de negociación y la conformación de una red
+                      integral de servicios financieros.
+                    </p>
+                  </div>
+
+                  <ol className="mt-9 grid gap-3">
+                    {proposalPoints.map((point) => {
+                      const Icon = point.icon;
+
+                      return (
+                        <li
+                          key={point.label}
+                          className="flex items-start gap-3 rounded-md border border-border/70 bg-muted/35 p-4"
+                        >
+                          <span className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-black text-accent-foreground">
+                            {point.label.replace(".", "")}
+                          </span>
+                          <Icon
+                            aria-hidden="true"
+                            className="mt-1 hidden size-5 shrink-0 text-primary sm:block"
+                          />
+                          <span className="text-base font-bold leading-7 text-foreground">
+                            {point.text}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="politicas"
+              className="relative scroll-mt-28 overflow-hidden rounded-lg border border-border bg-background p-6 text-center shadow-sm md:p-10"
+            >
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-1/2 size-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/5"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-1/2 size-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/5"
+              />
+
+              <div className="relative">
+                <FileText aria-hidden="true" className="mx-auto size-11 text-primary" />
+                <h2 className="mx-auto mt-5 max-w-4xl font-display text-3xl font-bold leading-tight text-primary md:text-4xl">
+                  La cooperativa de ahorro y crédito Caja Unión
+                </h2>
+                <p className="mx-auto mt-5 max-w-4xl text-base leading-7 text-muted-foreground">
+                  Reconoce que los sistemas y la información de TIC son activos
+                  valiosos que son esenciales para apoyar los objetivos estratégicos
+                  de la entidad.
+                </p>
+
+                <div className="mx-auto mt-9 flex max-w-2xl flex-col items-center gap-5">
+                  {policyDocuments.map((document) => (
+                    <span
+                      key={document}
+                      className="inline-flex min-h-10 w-full max-w-[480px] items-center justify-center rounded-full bg-accent px-6 py-2 text-center text-sm font-bold uppercase text-accent-foreground shadow-[0_10px_24px_rgba(255,170,43,0.24)]"
+                    >
+                      {document}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="grid scroll-mt-28 gap-5 md:grid-cols-2">
+              {supportCards.map((card) => {
                 const Icon = card.icon;
 
                 return (
