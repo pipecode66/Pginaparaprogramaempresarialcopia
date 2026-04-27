@@ -1,7 +1,7 @@
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Share2, X } from "lucide-react";
+import { Network, X } from "lucide-react";
 import { useState } from "react";
 
 const socialLinks = [
@@ -30,7 +30,7 @@ export function FloatingSocialLinks() {
       aria-label="Redes sociales"
       className="fixed left-5 bottom-5 z-40"
     >
-      <div className="relative flex flex-col items-start">
+      <div className="relative flex items-center gap-3">
         {open ? (
           <div className="absolute bottom-16 left-0 flex flex-col gap-3">
             {socialLinks.map((item) => {
@@ -65,9 +65,23 @@ export function FloatingSocialLinks() {
           {open ? (
             <X aria-hidden="true" className="size-6" />
           ) : (
-            <Share2 aria-hidden="true" className="size-6" />
+            <Network aria-hidden="true" className="size-6" />
           )}
         </button>
+
+        <a
+          href="https://ceus.redcoopcentral.com/"
+          target="_blank"
+          rel="noreferrer"
+          title="Abrir CEUS"
+          aria-label="Abrir CEUS en una nueva pestaña"
+          className="inline-flex size-14 items-center justify-center rounded-full border border-border bg-white text-center shadow-xl transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_14px_34px_rgba(7,20,13,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <span className="font-display text-lg font-black leading-none tracking-normal text-[#3b82f6]">
+            CE
+            <span className="text-[#8b5cf6]">US</span>
+          </span>
+        </a>
       </div>
     </nav>
   );
